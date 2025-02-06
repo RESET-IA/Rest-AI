@@ -15,12 +15,15 @@
         }
 
         body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background: url('https://iccsi.com.ar/wp-content/uploads/por-que-la-ia-da-tanto-miedo.webp') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('IMAGENES/FONDO.png');
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
 
-        }
 
         .header {
             width: 100%;
@@ -98,7 +101,7 @@
         /* Estilo para el contenedor con imagen de fondo */
         .background-container {
             padding: 310px;
-            background-image: url(IMAGENES/2.jpeg);
+            background-image: url(IMAGENES/FondoMonoSabio.png);
             display: flex;
             background-size: cover;  /* Ajusta la imagen para que cubra toda el área */
         }
@@ -272,7 +275,7 @@
 <body>
 
     <div class="header">
-    <a href="inicio.html"><img src="IMAGENES/LOGO1.jpeg" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
+    <a href="inicio.html"><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
         <div class="title"></div> <!-- Título centrado -->
     </div>
 
@@ -341,7 +344,7 @@
                         <p>Gestión de equipos de ventas</p>
                     </div>
                     <div class="card">
-                        <p>Subir documento (Word o Excel)</p>
+                        <p>Carga la base</p>
                         <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .doc, .docx" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
                     </div>
                 </div>
@@ -370,7 +373,14 @@
                         <p>Seguimiento a casos abiertos</p>
                     </div>
                 </div>
+                <br>
+                <div class="video-container">
+                    <video width="600" controls>
+                        <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
+            
     
             <!-- Sección Talento Humano con cuadros grandes -->
             <div id="talento-humano" class="section">
@@ -430,13 +440,13 @@
                 <br><br>
                 <div class="cards">
                     <div class="card" onclick="toggleDropdown()">
-                        <p>Prioriza y alerta sobre soporte crítico</p>
+                        <img src="IMAGENES/BotonActivaAtiendeyMejoraCobranza.png" alt="Soporte crítico">
                     </div>
                     <div class="card" onclick="loadChatbot()">
-                        <p>Responde preguntas automáticamente</p>
+                        <img src="IMAGENES/BotonActivaMejoraAtencionCliente.png" alt="Soporte crítico">
                     </div>
                     <div class="card">
-                        <p>Identifica audiencias de clientes</p>
+                        <img src="IMAGENES/BotonActivaIdentidicaAudienciasVendeMas.png" alt="Soporte crítico">
                     </div>
                 </div>
             </div>
