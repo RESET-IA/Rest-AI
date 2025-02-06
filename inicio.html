@@ -18,7 +18,8 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            background: #f4f4f4; /* Color de fondo más suave */
+            background: url('https://iccsi.com.ar/wp-content/uploads/por-que-la-ia-da-tanto-miedo.webp') no-repeat center center/cover;
+
         }
 
         .header {
@@ -340,10 +341,19 @@
                         <p>Gestión de equipos de ventas</p>
                     </div>
                     <div class="card">
-                        <p>Optimización de procesos de ventas</p>
+                        <p>Subir documento (Word o Excel)</p>
+                        <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .doc, .docx" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
                     </div>
                 </div>
             </div>
+            <div><script>
+                document.getElementById("fileUploadSAC").addEventListener("change", function(event) {
+                    alert("Archivo cargado: " + event.target.files[0].name);
+                });
+            </script></div>
+            
+    
+            
     
             <!-- Sección SAC con cuadros grandes -->
             <div id="sac" class="section">
@@ -415,6 +425,7 @@
 
             <!-- Sección Customer Support con cuadros grandes -->
             <div id="customer-support" class="section">
+                <i class="fas fa-headset"></i> Customer Support
                 <h2>Customer Support</h2>
                 <br><br>
                 <div class="cards">
@@ -437,32 +448,59 @@
                     <div class="dropdown-item" onclick="toggleSubmenu(this)">
                         <span>1st Party Data Netlife</span>
                         <div class="submenu">
-                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn">Otro Parámetro</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
                         </div>
                     </div>
                     <!-- Opción 2 con submenú -->
                     <div class="dropdown-item" onclick="toggleSubmenu(this)">
                         <span>2nd Party Data Netlife</span>
                         <div class="submenu">
-                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn">Otro Parámetro</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
                         </div>
                     </div>
                     <!-- Opción 3 con submenú -->
                     <div class="dropdown-item" onclick="toggleSubmenu(this)">
                         <span>3rd Party Data Netlife</span>
                         <div class="submenu">
-                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn">Otro Parámetro</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
                         </div>
                     </div>
                 </div>
             </div>
-    
+        
+            <script>
+                function toggleSubmenu(element) {
+                    document.querySelectorAll('.dropdown-item').forEach(item => {
+                        if (item !== element) {
+                            item.classList.remove("active");
+                        }
+                    });
+                    element.classList.toggle("active");
+                }
+                
+                function abrirVentana() {
+                    var width = 500;
+                    var height = 500;
+                    
+                    var screenWidth = window.screen.width;
+                    var screenHeight = window.screen.height;
+                    
+                    var left = (screenWidth - width) / 2;
+                    var top = (screenHeight - height) / 2;
+                    
+                    window.open('https://widget.synthflow.ai/widget/v2/1737715365969x184198467544593570/1737715365794x719056647128425200', 
+                                'Widget', 
+                                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
+                }
+            </script>
+
+            
             <!-- Sección Neurobrand con cuadros grandes -->
             <div id="neurobrand" class="section">
                 <h2>Neurobrand</h2>
