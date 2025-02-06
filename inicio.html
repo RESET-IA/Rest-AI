@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESET®</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #f4f4f4; /* Color de fondo más suave */
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            background: #000000; /* Color de cabecera más suave */
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #c7c7c7; /* Color de fondo lateral más suave */
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button {
+            width: 100%;
+            background: #333; /* Color de botones más suave */
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .menu li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd; /* Color de borde más suave */
+            text-align: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .menu li:hover,
+        .menu li.active {
+            background: #333; /* Color de fondo en hover más suave */
+            color: white;
+        }
+
+        .highlight {
+            background: #333; /* Color de fondo en hover más suave */
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .main {
+            flex: 1;
+            margin: 0;  /* Elimina el margen por defecto */
+            padding: 0;  /* Elimina el padding por defecto */
+        }
+
+        /* Estilo para el contenedor con imagen de fondo */
+        .background-container {
+            padding: 310px;
+            background-image: url(IMAGENES/2.jpeg);
+            display: flex;
+            background-size: cover;  /* Ajusta la imagen para que cubra toda el área */
+        }
+
+        /* Secciones ocultas */
+        .section {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Contenedor de los botones grandes */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Botones grandes */
+        .card {
+            background: rgba(200, 200, 200, 0.9);
+            width: 220px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            background: #bdbdbd; /* Color de hover de los botones grandes */
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .card p {
+            font-size: 16px;
+            color: black;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Contenedor del chatbot */
+        .chatbot-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px; /* Ajusta el tamaño del chatbot */
+            margin: 20px auto; /* Centra el chatbot */
+        }
+
+        .chatbot-container iframe {
+            width: 100%;
+            height: 600px; /* Tamaño mediano del chatbot */
+            border: none;
+        }
+
+        .logo {
+            height: 60px; /* Ajusta el tamaño del logo según sea necesario */
+            margin-right: 20px; /* Espacio entre el logo y el título */
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            flex: 1; /* Esto permite que el título ocupe el espacio restante y se centre */
+            text-align: center;
+            
+        }
+        /*<!-- Estilos CSS para el menú en el contenedor aparte */
+        .menu-container {
+            display: none;
+            position: fixed;  /* Asegúrate de que el menú esté fijado */
+            top: 50%;  /* Posición vertical al centro */
+            left: 62%;  /* Posición horizontal al centro */
+            transform: translate(-50%, -50%);  /* Alineación perfecta al centro */
+            background-color: #afafaf;
+            padding: 10px;
+            border-radius: 5px;
+            width: auto;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        .dropdown-btn {
+            background: transparent;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .dropdown-menu {
+            display: flex;
+            justify-content: space-between;  /* Opciones en línea, separadas */
+        }
+
+        /* Estilos de los ítems del menú */
+        .dropdown-item {
+            position: relative;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-align: center;
+            width: 200px;
+            background-color: #333; /* Fondo oscuro para el ítem */
+            color: #fff; /* Color blanco para el texto */
+        }
+
+        /* Estilos de los submenús */
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #444; /* Fondo gris oscuro para el submenú */
+            padding: 10px;
+            width: 200px;
+        }
+
+        /* Estilos de los botones dentro del submenú */
+        .submenu-btn {
+            display: block;
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            width: 100%;
+            color: #fff; /* Color blanco para el texto del submenú */
+        }
+
+        /* Hover para los botones del submenú */
+        .submenu-btn:hover {
+            background-color: #666; /* Fondo gris más claro al pasar el mouse */
+        }
+
+        /* Hover para los ítems del menú */
+        .dropdown-item:hover {
+            background-color: #555; /* Fondo gris intermedio para el hover */
+        }
+
+        /* Estilo cuando el submenú está activo */
+        .dropdown-item.active {
+            background-color: #222; /* Fondo más oscuro cuando está activo */
+        }
+
+        /* Estilo del texto del submenú */
+        .submenu-btn:hover {
+            background-color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+    <a href="inicio.html"><img src="IMAGENES/LOGO1.jpeg" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
+        <div class="title"></div> <!-- Título centrado -->
+    </div>
+
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="button">ACTIVA TAREA</div>
+    
+            <div class="menu">
+                <ul>
+                    <li onclick="showSection('marketing')">Marketing</li>
+                    <li onclick="showSection('ventas')">Ventas</li>
+                    <li onclick="showSection('sac')">SAC</li>
+                    <li onclick="showSection('talento-humano')">Talento Humano</li>
+                    <li onclick="showSection('business-development')">Business Development</li>
+                    <li onclick="showSection('operaciones')">Operaciones</li>
+                    <li onclick="showSection('customer-support')">Customer Support</li>
+                </ul>
+            </div>
+            <br>
+            <div class="button">KNOWLEDGE COMPANY BASE</div>
+    
+            <div class="menu">
+                <ul>
+                    <li onclick="showSection('neurobrand')">Neurobrand</li>
+                    <li onclick="showSection('cultura-adn')">Cultura ADN Company</li>
+                    <li onclick="showSection('business-challenge')">Business Challenge</li>
+                    <li onclick="showSection('cerebro-central')">Cerebro Central</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="main">
+
+            <!-- Contenedor con imagen de fondo -->
+            <div id="background-container" class="background-container">
+                
+            </div>
+
+            <!-- Sección Marketing con cuadros grandes -->
+            <div id="marketing" class="section">
+                <h2>Marketing</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Estrategias para marketing digital</p>
+                    </div>
+                    <div class="card">
+                        <p>Planificación de campañas publicitarias</p>
+                    </div>
+                    <div class="card">
+                        <p>Análisis de resultados de campañas</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Ventas con cuadros grandes -->
+            <div id="ventas" class="section">
+                <h2>Ventas</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Estrategias de ventas efectivas</p>
+                    </div>
+                    <div class="card">
+                        <p>Gestión de equipos de ventas</p>
+                    </div>
+                    <div class="card">
+                        <p>Optimización de procesos de ventas</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección SAC con cuadros grandes -->
+            <div id="sac" class="section">
+                <h2>SAC (Servicio de Atención al Cliente)</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Atención personalizada al cliente</p>
+                    </div>
+                    <div class="card">
+                        <p>Gestión de quejas y reclamos</p>
+                    </div>
+                    <div class="card">
+                        <p>Seguimiento a casos abiertos</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Talento Humano con cuadros grandes -->
+            <div id="talento-humano" class="section">
+                <h2>Talento Humano</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Gestión de talento dentro de la empresa</p>
+                    </div>
+                    <div class="card">
+                        <p>Desarrollo y capacitación de empleados</p>
+                    </div>
+                    <div class="card">
+                        <p>Planificación de recursos humanos</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Business Development con cuadros grandes -->
+            <div id="business-development" class="section">
+                <h2>Business Development</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Desarrollo de estrategias para el negocio</p>
+                    </div>
+                    <div class="card">
+                        <p>Gestión de alianzas estratégicas</p>
+                    </div>
+                    <div class="card">
+                        <p>Análisis de oportunidades de mercado</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Operaciones con cuadros grandes -->
+            <div id="operaciones" class="section">
+                <h2>Operaciones</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Optimización de procesos operativos</p>
+                    </div>
+                    <div class="card">
+                        <p>Gestión de la cadena de suministro</p>
+                    </div>
+                    <div class="card">
+                        <p>Mejora continua en las operaciones</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Customer Support con cuadros grandes -->
+            <div id="customer-support" class="section">
+                <h2>Customer Support</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card" onclick="toggleDropdown()">
+                        <p>Prioriza y alerta sobre soporte crítico</p>
+                    </div>
+                    <div class="card" onclick="loadChatbot()">
+                        <p>Responde preguntas automáticamente</p>
+                    </div>
+                    <div class="card">
+                        <p>Identifica audiencias de clientes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenedor para el menú horizontal (aparece debajo) -->
+            <div id="menu-container" class="menu-container">
+                <div class="dropdown-menu">
+                    <!-- Opción 1 con submenú -->
+                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
+                        <span>1st Party Data Netlife</span>
+                        <div class="submenu">
+                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn">Otro Parámetro</button>
+                        </div>
+                    </div>
+                    <!-- Opción 2 con submenú -->
+                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
+                        <span>2nd Party Data Netlife</span>
+                        <div class="submenu">
+                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn">Otro Parámetro</button>
+                        </div>
+                    </div>
+                    <!-- Opción 3 con submenú -->
+                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
+                        <span>3rd Party Data Netlife</span>
+                        <div class="submenu">
+                            <button class="submenu-btn">Clientes De Cobranza +30 Días</button>
+                            <button class="submenu-btn">Clientes De Cobranza +60 Días</button>
+                            <button class="submenu-btn">Otro Parámetro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Neurobrand con cuadros grandes -->
+            <div id="neurobrand" class="section">
+                <h2>Neurobrand</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Estudio de la neurociencia aplicada a la marca</p>
+                    </div>
+                    <div class="card">
+                        <p>Investigación de cómo las marcas impactan el cerebro</p>
+                    </div>
+                    <div class="card">
+                        <p>Técnicas para mejorar el reconocimiento de marca</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Cultura ADN Company con cuadros grandes -->
+            <div id="cultura-adn" class="section">
+                <h2>Cultura ADN Company</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Desarrollo de la cultura organizacional</p>
+                    </div>
+                    <div class="card">
+                        <p>Valores y principios de la empresa</p>
+                    </div>
+                    <div class="card">
+                        <p>Iniciativas para fortalecer la cultura empresarial</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Business Challenge con cuadros grandes -->
+            <div id="business-challenge" class="section">
+                <h2>Business Challenge</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Retos estratégicos para el negocio</p>
+                    </div>
+                    <div class="card">
+                        <p>Desarrollo de soluciones innovadoras</p>
+                    </div>
+                    <div class="card">
+                        <p>Evaluación de riesgos en el negocio</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sección Cerebro Central con cuadros grandes -->
+            <div id="cerebro-central" class="section">
+                <h2>Cerebro Central</h2>
+                <br><br>
+                <div class="cards">
+                    <div class="card">
+                        <p>Gestión de la inteligencia colectiva</p>
+                    </div>
+                    <div class="card">
+                        <p>Procesamiento de la información empresarial</p>
+                    </div>
+                    <div class="card">
+                        <p>Optimización de la toma de decisiones</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Contenedor donde se mostrará el chatbot -->
+            <div id="chatbot-container" class="chatbot-container">
+                <h2>Asistente IA</h2>
+                <br>
+                <iframe src="https://www.chatbase.co/chatbot-iframe/rIlh50slfkvlA5RgViqdr"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+        var sections = document.querySelectorAll('.section');
+        sections.forEach(section => section.style.display = "none");
+
+        document.getElementById(sectionId).style.display = "block";
+
+        // Ocultar el chatbot si se cambia de sección
+        var chatbotContainer = document.getElementById("chatbot-container");
+        chatbotContainer.style.display = "none";
+
+        // Ocultar el contenedor de imagen de fondo
+        var backgroundContainer = document.getElementById("background-container");
+            backgroundContainer.style.display = "none";
+
+        var menuItems = document.querySelectorAll(".menu li, .button");
+        menuItems.forEach(item => item.classList.remove("active"));
+
+        event.target.classList.add("active");
+    }
+    
+        function loadChatbot() {
+        var chatbotContainer = document.getElementById("chatbot-container");
+
+        // Alterna entre mostrar y ocultar el chatbot
+        if (chatbotContainer.style.display === "none" || chatbotContainer.style.display === "") {
+            chatbotContainer.style.display = "block"; // Mostrar el chatbot
+        } else {
+            chatbotContainer.style.display = "none"; // Ocultar el chatbot
+        }
+    }
+
+    // Función para alternar la visibilidad del menú
+    function toggleDropdown() {
+        var menuContainer = document.getElementById("menu-container");
+        // Cambia el estado de visualización entre block y none
+        if (menuContainer.style.display === "block") {
+            menuContainer.style.display = "none"; // Ocultar el menú
+        } else {
+            menuContainer.style.display = "block"; // Mostrar el menú
+        }
+    }
+
+    // Cierra el menú si se hace clic fuera de él
+    window.onclick = function(event) {
+        // Verifica si el clic fue fuera del menú y el botón
+        if (event.target.matches('.dropdown-btn') && !event.target.matches('.card')) {
+            var menuContainer = document.getElementById("menu-container");
+            menuContainer.style.display = 'none'; // Oculta el menú si se hace clic fuera
+        }
+    };
+
+    // Función para alternar la visibilidad del submenú
+    function toggleSubmenu(item) {
+        var submenu = item.querySelector('.submenu');
+
+        // Si el submenú está visible, se oculta
+        if (submenu.style.display === "block") {
+            submenu.style.display = "none";
+        } else {
+            // Si el submenú está oculto, se muestra
+            submenu.style.display = "block";
+
+            // Ocultar otros submenús
+            var allSubmenus = document.querySelectorAll('.submenu');
+            allSubmenus.forEach(function(otherSubmenu) {
+                if (otherSubmenu !== submenu) {
+                    otherSubmenu.style.display = "none";
+                }
+            });
+        }
+    }
+
+    
+
+    </script>
+    
+</body>
+</html>
