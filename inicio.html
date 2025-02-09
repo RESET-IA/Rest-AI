@@ -737,17 +737,18 @@
     }
 
     function logActivity(moduleName, action) {
-    fetch('TU_URL_DEL_WEBHOOK', {
+    fetch('https://resetagentes.app.n8n.cloud/webhook-test/d5b2f9fa-638b-412f-bc88-eedb2ded0b5d', { // Reemplaza con tu URL de n8n
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             "module": moduleName,
             "action": action,
-            "user": "UsuarioDesconocido",  // Reemplázalo con el usuario real si tienes login
+            "email": "usuario@email.com", // Opcional, puedes capturar un email si tienes autenticación
             "timestamp": new Date().toISOString()
         })
-    });
-}
+        });
+    }
+
 
 
     // Función para alternar la visibilidad del menú
