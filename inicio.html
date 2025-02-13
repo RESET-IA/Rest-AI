@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESET®</title>
+    <title>RESET® - AGENTES IA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
     <style>
@@ -11,138 +11,176 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'ADLaM Display', sans-serif; /* Cambio de tipografía */        }
-
-         body {
+            font-family: 'Arial', sans-serif;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
-            height: 100%;
-            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
             background-image: url('IMAGENES/FONDO.png');
-            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+            margin-top: 80px; /* Espacio suficiente para la cabecera */
         }
-
+        
         .header {
-            width: 100%;
-            height: 100px;
-            background: #000000; /* Color de cabecera más suave */
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
+         width: 100%;
+         height: 80px;
+         background: rgba(0, 0, 0, 0.8);
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0 20px;
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 1000;
         }
 
-         .content {
-            display: flex;
-            flex: 1;
+        .header-left {
+         display: flex;
+         align-items: center;
         }
 
-         .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
+        .header-right {
+         display: flex;
+         align-items: center;
         }
 
-         .image-container img {
-            width: 220px; /* Ajusta el tamaño según sea necesario */
-            height: auto;
+        .logo {
+         height: 60px; /* Ajusta el tamaño del logo */
+         max-width: 200px;
         }
 
-         .sidebar {
-            width: 250px;
-            background: #070101c0; /* Color de fondo lateral más suave */
-            color: rgb(216, 205, 202);
+        .widget-button {
+         background: none;
+         border: none;
+         cursor: pointer;
+        }
+
+        .widget-icon {
+         height: 50px; /* Ajusta el tamaño del widget */
+         max-width: 50px;
+        }
+
+
+        .header img {
+         height: 60px; /* Ajusta el tamaño del logo */
+         max-width: 200px;
+        }
+
+
+        /* Menú lateral */
+        .sidebar {
+            width: 280px;
+            background: rgba(139, 0, 0, 0.3);
             padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-
-        .button {
-            width: 100%;
-            background: #770707; /* Color de botones más suave */
             color: white;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 15px;
+            position: relative; /* No se superpone */
         }
 
-         .menu ul {
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 180px;
+        }
+
+        .menu ul {
             list-style: none;
             padding: 0;
         }
 
-         .menu li {
+        .menu ul {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: right;
+         padding: 0;
+         margin: 0;
+}
+
+        .menu li {
             display: flex;
-            align-items: center;
+            align-items: right;
             padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            border-bottom: 1px solid #444; /* Línea separadora */
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-         .menu li i {
+        .menu li i {
             margin-right: 10px;
         }
 
         .menu li:hover, 
-         .menu li.active {
-            background: #333; /* Color de fondo en hover más suave */
+        .menu li.active {
+            background: #ff3c00;
             color: white;
+            transform: scale(1.05);
         }
 
-         .menu-icon {
-            width: 15px; /* Ajusta el tamaño del icono */
-            height: auto;
-            margin-right: 10px;
-        }
-
-         .highlight {
-            background: #333; /* Color de fondo en hover más suave */
-            color: white;
-            padding: 5px;
-            cursor: pointer;
-        }
-
-         .main {
+        /* Contenedor principal */
+        .main {
             flex: 1;
-            margin: 0;  /* Elimina el margen por defecto */
-            padding: 0;  /* Elimina el padding por defecto */
-        }
-
-        /* Estilo para el contenedor con imagen de fondo */
-         .background-container {
-            padding: 310px;
-            background-image: url(IMAGENES/FondoMonoSabio.png);
             display: flex;
-            background-size: cover;  /* Ajusta la imagen para que cubra toda el área */
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
         }
 
-        /* Secciones ocultas */
-         .section {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
+        .section {
+         display: none;
+         width: 50%; /* Ajusta el tamaño del contenedor */
+         max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+         text-align: center;
+         padding: 30px;
+         background: rgba(0, 0, 0, 0.8);
+         border-radius: 15px;
+         box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+         position: absolute;
+         top: 50%;
+         left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
+         transform: translate(-50%, -50%);
         }
 
-        /* Contenedor de los botones grandes */
+        /* Ajuste de la imagen dentro de la sección */
+        .section img {
+         width: 40%; /* Reduce el tamaño de la imagen */
+         max-width: 250px; /* Límite máximo de ancho */
+         display: block;
+         margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
+        }
+
+        
+        /* Contenedor de botones centrado */
         .cards {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+
         }
         .cards .card {
             background: url('IMAGENES/ButtonReset.png') no-repeat center center;
@@ -151,13 +189,9 @@
             transition: transform 0.2s ease-in-out;
        }
 
-        .cards .card:hover {
-            transform: scale(1.05);
-        }
 
-        /* Botones grandes */
         .card {
-            background: rgba(200, 200, 200, 0.9);
+            background: rgba(255, 255, 255, 0.1);
             width: 220px;
             height: 150px;
             display: flex;
@@ -167,634 +201,401 @@
             text-align: center;
             font-size: 16px;
             font-weight: bold;
-            padding: 10px;
             border-radius: 8px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
             cursor: pointer;
-            transition: transform 0.2s ease, background 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        card:hover {
-            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-            background-size: cover;
+        .card i {
+         font-size: 28px; /* Ajusta el tamaño del icono */
+         margin-right: 10px; /* Espacio entre icono y texto */
+        }
+
+        .card:hover {
+            background: rgba(255, 60, 0, 0.8);
             color: white;
             transform: scale(1.05);
         }
 
-        .card p {
-            font-size: 16px;
-            color: black;
-            font-weight: bold;
-            margin-top: 10px;
+        .video-container {
+         margin-top: 20px; /* Espaciado entre los botones y el video */
+         display: flex;
+         justify-content: center;
+         align-items: center;
         }
 
-        /* Contenedor del chatbot */
-        .chatbot-container {
-            display: none;
-            margin-top: 20px;
-            text-align: center;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            max-width: 800px; /* Ajusta el tamaño del chatbot */
-            margin: 20px auto; /* Centra el chatbot */
+        .video-container video {
+         width: 80%; /* Ajusta el ancho del video */
+         max-width: 600px; /* Tamaño máximo del video */
+         border-radius: 10px; /* Bordes redondeados */
+         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
         }
 
-        .chatbot-container iframe {
-            width: 100%;
-            height: 500px; /* Tamaño mediano del chatbot */
-            border: none;
+        .widget-button {
+         background: none; /* ❌ Elimina el color de fondo */
+         border: none; /* ❌ Elimina cualquier borde */
+         padding: 12px;
+         border-radius: 0px; /* 🔳 Lo hace completamente cuadrado */
+         cursor: pointer;
+         position: fixed;
+         bottom: 20px;
+         right: 60px;
+         width: 60px; /* Ajusta el tamaño */
+         height: 60px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: transform 0.3s ease-in-out;
         }
 
-        .logo {
-            height: 60px; /* Ajusta el tamaño del logo según sea necesario */
-            margin-right: 20px; /* Espacio entre el logo y el título */
+        .widget-button:hover {
+         transform: scale(1.1);
+         box-shadow: none; /* ❌ Elimina cualquier sombra */
         }
 
-
-        .logo-image {
-         width: 110%;
-         max-width: 400px; /* Ajusta el tamaño del logo */
-         display: block;
-         margin: 0 auto;
-         transition: transform 0.2s ease-in-out;
+        .widget-icon {
+         width: 640px; /* Ajusta el tamaño del ícono */
+         height: 640px;
         }
 
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            flex: 1; /* Esto permite que el título ocupe el espacio restante y se centre */
-            text-align: center;
-            
-        }
-        /*<!-- Estilos CSS para el menú en el contenedor aparte */
-        .menu-container {
-            display: none;
-            position: fixed;  /* Asegúrate de que el menú esté fijado */
-            top: 50%;  /* Posición vertical al centro */
-            left: 62%;  /* Posición horizontal al centro */
-            transform: translate(-50%, -50%);  /* Alineación perfecta al centro */
-            background-color: #afafaf;
-            padding: 10px;
-            border-radius: 5px;
-            width: auto;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-        }
+    .tooltip {
+        visibility: hidden;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 70px;
+        right: 10px;
+        font-size: 12px;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        white-space: nowrap;
+    }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+    .widget-button:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
 
-        .dropdown-btn {
-            background: transparent;
-            font-weight: bold;
-            color: rgb(0, 0, 0);
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-        .dropdown-menu {
-            display: flex;
-            justify-content: space-between;  /* Opciones en línea, separadas */
-        }
-
-        /* Estilos de los ítems del menú */
-        .dropdown-item {
-            position: relative;
-            padding: 8px 16px;
-            cursor: pointer;
-            text-align: center;
-            width: 200px;
-            background-color: #333; /* Fondo oscuro para el ítem */
-            color: #fff; /* Color blanco para el texto */
-        }
-
-        /* Estilos de los submenús */
-        .submenu {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 100%;
-            background-color: #444; /* Fondo gris oscuro para el submenú */
-            padding: 10px;
-            width: 200px;
-        }
-
-        /* Estilos de los botones dentro del submenú */
-        .submenu-btn {
-            display: block;
-            padding: 8px 16px;
-            background: transparent;
-            border: none;
-            width: 100%;
-            color: #fff; /* Color blanco para el texto del submenú */
-        }
-
-        /* Hover para los botones del submenú */
-        .submenu-btn:hover {
-            background-color: #666; /* Fondo gris más claro al pasar el mouse */
-        }
-
-        /* Hover para los ítems del menú */
-        .dropdown-item:hover {
-            background-color: #555; /* Fondo gris intermedio para el hover */
-        }
-
-        /* Estilo cuando el submenú está activo */
-        .dropdown-item.active {
-            background-color: #222; /* Fondo más oscuro cuando está activo */
-        }
-
-        /* Estilo del texto del submenú */
-        .submenu-btn:hover {
-            background-color: #666;
-        }
+    
 
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
+        <a href="inicio.html"><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
         <div class="title"></div> <!-- Título centrado -->
         <button class="widget-button" onclick="abrirVentana()">
             <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
+            <span class="tooltip">Habla con Clarity</span>
         </button>
     </div>
-    
-    <style>
-        .widget-button {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            padding: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-    
-        .widget-button:hover {
-            transform: scale(1.1);
-        }
-    
-        .widget-icon {
-            width: 120x; /* Ajusta el tamaño del icono */
-            height: 120px;
-        }
-    </style>
     
     <script>
         function abrirVentana() {
             var width = 500;
-            var height = 500;
-    
+            var height = 600;
             var screenWidth = window.screen.width;
             var screenHeight = window.screen.height;
-    
             var left = (screenWidth - width) / 2;
             var top = (screenHeight - height) / 2;
     
-            window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
-                        'Widget', 
-                        'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
+            window.open(
+                'https://elevenlabs.io/app/talk-to?agent_id=qLet39dCFhoD4MljA1U6', 
+                'Widget', 
+                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes'
+            );
         }
-    </script>
-    
-   
+    </script>     
+       
 
-    <div class="content">
-        <div class="sidebar">
-            <div class="logo-container">
-                <img src="IMAGENES/BotonActivaAutomatizacion.png" alt="Cerebro Central" class="logo-image">
-            </div>
-            <P>Artesanos</P>
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="IMAGENES/BotonActivaAutomatizacion.png" alt="Logo Artesanos" class="menu-logo">
+        </div>
+        <p style="text-align: center; font-weight: bold;">Artesanos</p>
+        <p style="text-align: center; font-weight: bold;">-----------------------</p>
 
-            <div class="menu">
-                <ul>
-                    <li onclick="showSection('neuromarketing'); logActivity('Neuromarketing', 'Ingresó')">
-                        <img src="IMAGENES/IconNeuromarketing.png" alt="Neuromarketing" class="menu-icon"> Neuromarketing
-                    </li>
-                    <li onclick="showSection('ventas-&-comercial'); logActivity('Ventas & Comercial', 'Ingresó')">
-                        <img src="IMAGENES/IconVentas.png" alt="Ventas & Comercial" class="menu-icon"> Ventas & Comercial
-                    </li>
-                    <li onclick="showSection('servicio-al-cliente'); logActivity('Servicio al Cliente/CX', 'Ingresó')">
-                        <img src="IMAGENES/IconServicioalCliente.png" alt="Servicio al Cliente" class="menu-icon"> Servicio al Cliente/CX
-                    </li>
-                    <li onclick="showSection('talento-humano'); logActivity('Talento Humano', 'Ingresó')">
-                        <img src="IMAGENES/IconVentas.png" alt="Talento Humano" class="menu-icon"> Talento Humano
-                    </li>
-                    <li onclick="showSection('formación'); logActivity('Formación', 'Ingresó')">
-                        <img src="IMAGENES/IconFormacionb.png" alt="Formación" class="menu-icon"> Formación
-                    </li>
-                </ul>
-            </div>
-            
-            <br>
-            <div class="logo-container">
-                <img src="IMAGENES/BotonCerebro.png" alt="Cerebro Central" class="logo-image">
-            </div>
-            <P>Corpus de Entrenamiento</P>
-    
-            <div class="menu">
-                <ul>
-                    <li onclick="showSection('neurobrand')">
-                    <img src="IMAGENES/IconNeuroBrand.png" alt="Neurobrand" class="menu-icon"> Neurobrand
-                    </li>
-                    <li onclick="showSection('cultura-adn')">
-                    <img src="IMAGENES/IconCulturaADN.png" alt="Cultura ADN Company" class="menu-icon"> Cultura ADN Company
-                    </li>
-                    <li onclick="showSection('business-challenge')">
-                    <img src="IMAGENES/IconBusinessChallenge.png" alt="Business Challenge" class="menu-icon"> Business Challenge
-                    </li>
-                    <li onclick="showSection('people-analytics')">
-                    <img src="IMAGENES/IconPeopleAnalytics.png" alt="People Analytics" class="menu-icon"> People Analytics
-                    </li>
-                    <li onclick="showSection('ayuda')">
-                    <img src="IMAGENES/IconAyuda.png" alt="Ayuda" class="menu-icon"> Ayuda
-                    </li>
-               </ul>
+        <div class="menu">
+            <ul>
+                <li onclick="showSection('neuromarketing')"><i class="fas fa-brain"></i> Neuromarketing</li>
+                <li onclick="showSection('ventas-comercial')"><i class="fas fa-chart-line"></i> Ventas & Comercial</li>
+                <li onclick="showSection('servicio-cliente')"><i class="fas fa-headset"></i> Servicio al Cliente</li>
+                <li onclick="showSection('talento-humano')"><i class="fas fa-users"></i> Talento Humano</li>
+                <li onclick="showSection('formacion')"><i class="fas fa-graduation-cap"></i> Formación</li>
+            </ul>                
+        </div>
+        <div class="logo-container">
+            <img src="IMAGENES/BotonCerebro.png" alt="Logo Corpus de Entrenamiento" class="menu-logo">
+        </div>
+        <p style="text-align: center; font-weight: bold;">Corpus de Entrenamiento</p>
+        <p style="text-align: center; font-weight: bold;">-----------------------</p>
 
+        <div class="menu">
+            <ul>
+                <li onclick="showSection('neuroband')"><i class="fas fa-lightbulb"></i> Neuroband</li>
+                <li onclick="showSection('cultura-adn')"><i class="fas fa-users"></i> Cultura ADN Company</li>
+                <li onclick="showSection('business-challenge')"><i class="fas fa-briefcase"></i> Business Challenge</li>
+                <li onclick="showSection('people-analytics')"><i class="fas fa-chart-bar"></i> People Analytics</li>
+                <li onclick="showSection('ayuda')"><i class="fas fa-question-circle"></i> Ayuda</li>
+            </ul>          
+        </div>
+    </div>
+
+    <style>
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .menu-logo {
+            width: 250px;
+            height: auto;
+        }
+    </style>
+
+
+    <!-- Contenido dinámico -->
+    <div class="main">
+        <div id="neuromarketing" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Neuromarketing</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-bullhorn"></i><p>Estrategia Publicitaria</p></div>
+                <div class="card"><i class="fas fa-magnet"></i><p>Psicología del Consumidor</p></div>
+                <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Datos</p></div>
+            </div>
+        
+            <!-- Video agregado debajo de los botones -->
+            <div class="video-container">
+                <video controls>
+                    <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
             </div>
         </div>
-    
-        <div class="main">
-
-            <!-- Contenedor con imagen de fondo -->
-            <div id="background-container" class="background-container">
-                
-            </div>
-
-            <!-- Sección Marketing con cuadros grandes -->
-            <div id="neuromarketing" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <img src="IMAGENES/AreaMarketing.png" alt="Neuromarketing">
-            
-                <br><br>
-                <div class="cards">
-                    <div class="card" style="background: transparent; box-shadow: none;">
-                        <img src="IMAGENES/BotonActivaAtiendeyMejoraCobranza.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card" style="background: transparent; box-shadow: none;">
-                        <img src="IMAGENES/BotonActivaNeuromarketing.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card" style="background: transparent; box-shadow: none;">
-                        <img src="IMAGENES/BotonActivaAnalisisResusltados.png" alt="Soporte crítico">
-                    </div>
-                </div>
-                <br>
-                <div class="video-container">
-                    <video width="600" controls>
-                        <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-            <!-- Sección Ventas con cuadros grandes -->
-            <div id="ventas-&-comercial" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Ventas & Comercial</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Estrategias de ventas efectivas</p>
-                    </div>
-                    <div class="card">
-                        <p>Gestión de equipos de ventas</p>
-                    </div>
-                    <div class="card">
-                        <p>Carga la base</p>
-                        <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .doc, .docx" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
-                    </div>
-                </div>
-            </div>
-            <div><script>
-                document.getElementById("fileUploadSAC").addEventListener("change", function(event) {
-                    alert("Archivo cargado: " + event.target.files[0].name);
-                });
-            </script></div>
-            
-    
-            <!-- Sección SAC con cuadros grandes -->
-            <div id="servicio-al-cliente" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <img src="IMAGENES/AreaSAC.png" alt="Soporte crítico">
-                <div class="upload-container">
-                    <label for="fileUploadSAC" class="upload-button">
-                        <img src="IMAGENES/BotónCargaBase.png" alt="Soporte crítico">
-                    </label>
-                    <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .csv" style="display: none;">
-                </div>
-                <br><br>
-                <div class="cards">
-                    <div class="card"> 
-                        <img src="IMAGENES/BotonActivaAtiendeyMejoraCobranza.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card">
-                        <img src="IMAGENES/BotonActivaNeuromarketing.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card">
-                        <img src="IMAGENES/BotonActivaAnalisisResusltados.png" alt="Soporte crítico">
-                    </div>
-                </div>
         
-            </div>
-            
-    
-            <!-- Sección Talento Humano con cuadros grandes -->
-            <div id="talento-humano" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Talento Humano</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Gestión de talento dentro de la empresa</p>
-                    </div>
-                    <div class="card">
-                        <p>Desarrollo y capacitación de empleados</p>
-                    </div>
-                    <div class="card">
-                        <p>Planificación de recursos humanos</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Sección Customer Support con cuadros grandes -->
-            <div id="formación" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <img src="IMAGENES/AreaSAC.png" alt="Soporte crítico">
-                <br><br>
-                <div class="cards">
-                    <div class="card" onclick="toggleDropdown()">
-                        <img src="IMAGENES/BotonActivaAtiendeyMejoraCobranza.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card" onclick="loadChatbot()">
-                        <img src="IMAGENES/BotonActivaMejoraAtencionCliente.png" alt="Soporte crítico">
-                    </div>
-                    <div class="card">
-                        <img src="IMAGENES/BotonActivaIdentidicaAudienciasVendeMas.png" alt="Soporte crítico">
-                    </div>
-                </div>
-            </div>
+        <div id="ventas-comercial" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Ventas & Comercial</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-handshake"></i><p>Negociación</p></div>
+                <div class="card"><i class="fas fa-users"></i><p>Gestión de Equipos</p></div>
+                <div class="card"><i class="fas fa-dollar-sign"></i><p>Estrategias de Venta</p></div>
+            </div>        
+        </div>
 
-            <!-- Contenedor para el menú horizontal (aparece debajo) -->
-            <div id="menu-container" class="menu-container" style="margin-top: 200px;">
-                <div class="dropdown-menu">
-                    <!-- Opción 1 con submenú -->
-                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
-                        <span>1st Party Data Netlife</span>
-                        <div class="submenu">
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
-                        </div>
-                    </div>
-                    <!-- Opción 2 con submenú -->
-                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
-                        <span>2nd Party Data Netlife</span>
-                        <div class="submenu">
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
-                        </div>
-                    </div>
-                    <!-- Opción 3 con submenú -->
-                    <div class="dropdown-item" onclick="toggleSubmenu(this)">
-                        <span>3rd Party Data Netlife</span>
-                        <div class="submenu">
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +30 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Clientes De Cobranza +60 Días</button>
-                            <button class="submenu-btn" onclick="abrirVentana()">Otro Parámetro</button>
-                        </div>
-                    </div>
+        <div id="servicio-cliente" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Servicio al Cliente</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-folder-open"></i>
+                    <p>Atiende & Mejora Cobranza</p>
+                    <input type="file" id="uploadFile" style="display:none;" onchange="handleFileUpload(event)">
+                    <button onclick="document.getElementById('uploadFile').click()">Subir Documento</button>
                 </div>
+                <div class="card" onclick="openChatWindow()" style="cursor:pointer;">
+                    <i class="fas fa-user-tie"></i>
+                    <p>Mejora la Atención al Cliente</p>
+                </div>
+                <div class="card"><i class="fas fa-calendar-alt"></i><p>Identifica Audiencias</p></div>
             </div>
-            
+        </div>
+
+        <script>
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                alert("Archivo " + file.name + " subido correctamente.");
+            }
+        }
+
+        function openChatWindow() {
+            var width = 500;
+            var height = 600;
+            var screenWidth = window.screen.width;
+            var screenHeight = window.screen.height;
+            var left = (screenWidth - width) / 2;
+            var top = (screenHeight - height) / 2;
+
+            window.open(
+                'https://elevenlabs.io/app/talk-to?agent_id=qLet39dCFhoD4MljA1U6', 
+                'ChatWindow', 
+                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes'
+            );
+        }
+        </script>
+
+
+        <div id="talento-humano" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Talento Humano</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-users-cog"></i><p>Gestión del Talento</p></div>
+                <div class="card"><i class="fas fa-chart-line"></i><p>Desarrollo Profesional</p></div>
+                <div class="card"><i class="fas fa-hand-holding-heart"></i><p>Bienestar Laboral</p></div>
+            </div>
+        </div>
         
-            <script>
-                function toggleSubmenu(element) {
-                    document.querySelectorAll('.dropdown-item').forEach(item => {
-                        if (item !== element) {
-                            item.classList.remove("active");
-                        }
-                    });
-                    element.classList.toggle("active");
-                }
-                
-                function abrirVentana() {
-                    var width = 500;
-                    var height = 500;
-                    
-                    var screenWidth = window.screen.width;
-                    var screenHeight = window.screen.height;
-                    
-                    var left = (screenWidth - width) / 2;
-                    var top = (screenHeight - height) / 2;
-                    
-                    window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
-                                'Widget', 
-                                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
-                }
-            </script>
+        <div id="formacion" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Formación</h2>
+            <div class="cards">
+                <div class="card" style="position: relative;">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p>Atiende & Mejora Cobranza</p>
+                    <div class="dropdown-container">
+                        <button class="dropdown-btn" onclick="toggleDropdown('dropdown1')">1st Party Data Netlife</button>
+                        <div id="dropdown1" class="dropdown-content">
+                            <div class="dropdown-item" onclick="selectOption('dropdown1', 'Clientes De Cobranza +30 Días')">Clientes De Cobranza +30 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown1', 'Clientes De Cobranza +60 Días')">Clientes De Cobranza +60 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown1', 'Otro Parámetro')">Otro Parámetro</div>
+                        </div>
+                        <button class="dropdown-btn" onclick="toggleDropdown('dropdown2')">2nd Party Data Netlife</button>
+                        <div id="dropdown2" class="dropdown-content">
+                            <div class="dropdown-item" onclick="selectOption('dropdown2', 'Clientes De Cobranza +30 Días')">Clientes De Cobranza +30 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown2', 'Clientes De Cobranza +60 Días')">Clientes De Cobranza +60 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown2', 'Otro Parámetro')">Otro Parámetro</div>
+                        </div>
+                        <button class="dropdown-btn" onclick="toggleDropdown('dropdown3')">3rd Party Data Netlife</button>
+                        <div id="dropdown3" class="dropdown-content">
+                            <div class="dropdown-item" onclick="selectOption('dropdown3', 'Clientes De Cobranza +30 Días')">Clientes De Cobranza +30 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown3', 'Clientes De Cobranza +60 Días')">Clientes De Cobranza +60 Días</div>
+                            <div class="dropdown-item" onclick="selectOption('dropdown3', 'Otro Parámetro')">Otro Parámetro</div>
+                        </div>
+                    </div>
+                    <p id="selectedOption" class="selected-option"></p>
+                </div>
+                <div class="card"><i class="fas fa-chalkboard-teacher"></i><p>Mentoría y Coaching</p></div>
+                <div class="card"><i class="fas fa-book-open"></i><p>Recursos Educativos</p></div>
+            </div>
+        </div>
 
-            
-            <!-- Sección Neurobrand con cuadros grandes -->
-            <div id="neurobrand" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Neurobrand</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Estudio de la neurociencia aplicada a la marca</p>
-                    </div>
-                    <div class="card">
-                        <p>Investigación de cómo las marcas impactan el cerebro</p>
-                    </div>
-                    <div class="card">
-                        <p>Técnicas para mejorar el reconocimiento de marca</p>
-                    </div>
-                </div>
+        <style>
+        .dropdown-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .dropdown-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .selected-option {
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        </style>
+
+        <script>
+        function toggleDropdown(dropdownId) {
+            document.getElementById(dropdownId).style.display = 
+                document.getElementById(dropdownId).style.display === "block" ? "none" : "block";
+        }
+
+        function selectOption(dropdownId, optionText) {
+            document.getElementById("selectedOption").textContent = optionText;
+            document.getElementById(dropdownId).style.display = "none";
+        }
+        </script>
+
+    </div>
+
+
+    <!-- Contenido dinámico -->
+    <div class="main">
+        <div id="neuroband" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Neuroband</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-lightbulb"></i><p>Creatividad e Innovación</p></div>
+                <div class="card"><i class="fas fa-bullhorn"></i><p>Posicionamiento de Marca</p></div>
+                <div class="card"><i class="fas fa-chart-line"></i><p>Estrategia Digital</p></div>
             </div>
-    
-            <!-- Sección Cultura ADN Company con cuadros grandes -->
-            <div id="cultura-adn" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Cultura ADN Company</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Desarrollo de la cultura organizacional</p>
-                    </div>
-                    <div class="card">
-                        <p>Valores y principios de la empresa</p>
-                    </div>
-                    <div class="card">
-                        <p>Iniciativas para fortalecer la cultura empresarial</p>
-                    </div>
-                </div>
+        </div>
+
+        <div id="cultura-adn" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Cultura ADN Company</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-users"></i><p>Gestión del Cambio</p></div>
+                <div class="card"><i class="fas fa-handshake"></i><p>Valores Corporativos</p></div>
+                <div class="card"><i class="fas fa-users-cog"></i><p>Construcción de Equipos</p></div>
             </div>
-    
-            <!-- Sección Business Challenge con cuadros grandes -->
-            <div id="business-challenge" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Business Challenge</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Retos estratégicos para el negocio</p>
-                    </div>
-                    <div class="card">
-                        <p>Desarrollo de soluciones innovadoras</p>
-                    </div>
-                    <div class="card">
-                        <p>Evaluación de riesgos en el negocio</p>
-                    </div>
-                </div>
+        </div>
+
+        <div id="business-challenge" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>Business Challenge</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-tasks"></i><p>Innovación Empresarial</p></div>
+                <div class="card"><i class="fas fa-briefcase"></i><p>Casos de Negocio</p></div>
+                <div class="card"><i class="fas fa-bullseye"></i><p>Optimización de Procesos</p></div>
             </div>
-    
-            <!-- Sección Cerebro Central con cuadros grandes -->
-            <div id="cerebro-central" class="section">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Cerebro Central</h2>
-                <br><br>
-                <div class="cards">
-                    <div class="card">
-                        <p>Gestión de la inteligencia colectiva</p>
-                    </div>
-                    <div class="card">
-                        <p>Procesamiento de la información empresarial</p>
-                    </div>
-                    <div class="card">
-                        <p>Optimización de la toma de decisiones</p>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Contenedor donde se mostrará el chatbot -->
-            <div id="chatbot-container" class="chatbot-container">
-                <div class="image-container">
-                    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-                </div>
-                <h2>Asistente IA</h2>
-                <br>
-                <iframe src="https://www.chatbase.co/chatbot-iframe/rIlh50slfkvlA5RgViqdr"></iframe>
+        </div>
+
+        <div id="people-analytics" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>People Analytics</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Talento</p></div>
+                <div class="card"><i class="fas fa-database"></i><p>Gestión de Datos</p></div>
+                <div class="card"><i class="fas fa-search"></i><p>Predicción de Rendimiento</p></div>
             </div>
         </div>
     </div>
-    
+
     <script>
         function showSection(sectionId) {
-        var sections = document.querySelectorAll('.section');
-        sections.forEach(section => section.style.display = "none");
+    // Oculta todas las secciones antes de mostrar la deseada
+    document.querySelectorAll('.section').forEach(section => section.style.display = "none");
 
-        document.getElementById(sectionId).style.display = "block";
+    // Muestra la sección seleccionada
+    document.getElementById(sectionId).style.display = "block";
 
-        // Ocultar el chatbot si se cambia de sección
-        var chatbotContainer = document.getElementById("chatbot-container");
-        chatbotContainer.style.display = "none";
+    // Remueve la clase "active" de todos los elementos del menú
+    document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
 
-        // Ocultar el contenedor de imagen de fondo
-        var backgroundContainer = document.getElementById("background-container");
-            backgroundContainer.style.display = "none";
-
-        var menuItems = document.querySelectorAll(".menu li, .button");
-        menuItems.forEach(item => item.classList.remove("active"));
-
-        event.target.classList.add("active");
+    // Agrega la clase "active" al botón que fue presionado
+    let selectedItem = document.querySelector(`li[onclick="showSection('${sectionId}')"]`);
+    if (selectedItem) {
+        selectedItem.classList.add("active");
     }
-    
-        function loadChatbot() {
-        var chatbotContainer = document.getElementById("chatbot-container");
-
-        // Alterna entre mostrar y ocultar el chatbot
-        if (chatbotContainer.style.display === "none" || chatbotContainer.style.display === "") {
-            chatbotContainer.style.display = "block"; // Mostrar el chatbot
-        } else {
-            chatbotContainer.style.display = "none"; // Ocultar el chatbot
-        }
-    }
-
-    function logActivity(moduleName, action) {
-    fetch('https://resetagentes.app.n8n.cloud/webhook-test/d5b2f9fa-638b-412f-bc88-eedb2ded0b5d', { // Reemplaza con tu URL de n8n
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            "module": moduleName,
-            "action": action,
-            "email": "usuario@email.com", // Opcional, puedes capturar un email si tienes autenticación
-            "timestamp": new Date().toISOString()
-        })
-        });
-    }
-
-
-
-    // Función para alternar la visibilidad del menú
-    function toggleDropdown() {
-        var menuContainer = document.getElementById("menu-container");
-        // Cambia el estado de visualización entre block y none
-        if (menuContainer.style.display === "block") {
-            menuContainer.style.display = "none"; // Ocultar el menú
-        } else {
-            menuContainer.style.display = "block"; // Mostrar el menú
-        }
-    }
-
-    // Cierra el menú si se hace clic fuera de él
-    window.onclick = function(event) {
-        // Verifica si el clic fue fuera del menú y el botón
-        if (event.target.matches('.dropdown-btn') && !event.target.matches('.card')) {
-            var menuContainer = document.getElementById("menu-container");
-            menuContainer.style.display = 'none'; // Oculta el menú si se hace clic fuera
-        }
-    };
-
-    // Función para alternar la visibilidad del submenú
-    function toggleSubmenu(item) {
-        var submenu = item.querySelector('.submenu');
-
-        // Si el submenú está visible, se oculta
-        if (submenu.style.display === "block") {
-            submenu.style.display = "none";
-        } else {
-            // Si el submenú está oculto, se muestra
-            submenu.style.display = "block";
-
-            // Ocultar otros submenús
-            var allSubmenus = document.querySelectorAll('.submenu');
-            allSubmenus.forEach(function(otherSubmenu) {
-                if (otherSubmenu !== submenu) {
-                    otherSubmenu.style.display = "none";
-                }
-            });
-        }
-    }
-
-    
-
-    </script>
-    
+}
+    </script>  
 </body>
 </html>
