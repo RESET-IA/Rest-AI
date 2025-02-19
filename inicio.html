@@ -21,7 +21,7 @@
             padding: 0;
             overflow-x: hidden;
         }
-        
+
         body {
             background-image: url('IMAGENES/FONDO.png');
             background-size: cover;
@@ -35,293 +35,207 @@
         }
         
         .header {
-         width: 100%;
-         height: 80px;
-         background: rgba(0, 0, 0, 0.8);
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 0 20px;
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 1000;
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         .header-left {
-         display: flex;
-         align-items: center;
+            display: flex;
+            align-items: center;
         }
 
         .header-right {
-         display: flex;
-         align-items: center;
+           display: flex;
+           align-items: center;
         }
 
         .logo {
-         height: 160px; /* Ajusta el tamaño del logo */
-         max-width: 200px;
+           height: 160px; /* Ajusta el tamaño del logo */
+           max-width: 200px;
         }
-
-        .widget-button {
-         background: none;
-         border: none;
-         cursor: pointer;
-         width: 180px; /* Aumentado el tamaño */
-         height: 180px; /* Aumentado el tamaño */
-        }
-
-        .widget-icon {
-         height: 180px; /* Ajusta el tamaño del widget */
-         max-width: 150px;
-        }
-
 
         .header img {
-         height: 60px; /* Ajusta el tamaño del logo */
-         max-width: 200px;
+          height: 60px; /* Ajusta el tamaño del logo */
+          max-width: 200px;
         }
-
 
         /* Menú lateral */
         .sidebar {
-            width: 280px;
-            background: rgba(139, 0, 0, 0.3);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            color: white;
-            position: relative; /* No se superpone */
+          width: 280px;
+          background: rgba(139, 0, 0, 0.3);
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          color: white;
+          position: relative; /* No se superpone */
         }
 
         .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
+          text-align: center;
+          margin-bottom: 30px;
         }
 
         .logo {
-            width: 180px;
+          width: 180px;
         }
 
         .menu ul {
-            list-style: none;
-            padding: 0;
+          list-style: none;
+          padding: 0;
         }
 
         .menu ul {
-         width: 100%;
-         display: flex;
-         flex-direction: column;
-         align-items: right;
-         padding: 0;
-         margin: 0;
-}
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: right;
+          padding: 0;
+          margin: 0;
+        }
 
         .menu li {
-            display: flex;
-            align-items: right;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          align-items: right;
+          padding: 12px;
+          font-size: 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.3s;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .menu li i {
-            margin-right: 10px;
+          margin-right: 10px;
         }
 
         .menu li:hover, 
         .menu li.active {
-            background: #ff3c00;
-            color: white;
-            transform: scale(1.05);
+          background: #ff3c00;
+          color: white;
+          transform: scale(1.05);
         }
 
         /* Contenedor principal */
         .main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          color: rgb(247, 242, 242);
         }
 
         .section {
-         display: none;
-         width: 50%; /* Ajusta el tamaño del contenedor */
-         max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
-         text-align: center;
-         padding: 30px;
-         background: rgba(0, 0, 0, 0.8);
-         border-radius: 15px;
-         box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-         position: absolute;
-         top: 50%;
-         left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
-         transform: translate(-50%, -50%);
+          display: none;
+          width: 50%; /* Ajusta el tamaño del contenedor */
+          max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+          text-align: center;
+          padding: 30px;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 15px;
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+          position: absolute;
+          top: 50%;
+          left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
+          transform: translate(-50%, -50%);
         }
 
         /* Ajuste de la imagen dentro de la sección */
         .section img {
-         width: 40%; /* Reduce el tamaño de la imagen */
-         max-width: 250px; /* Límite máximo de ancho */
-         display: block;
-         margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
+          width: 40%; /* Reduce el tamaño de la imagen */
+          max-width: 250px; /* Límite máximo de ancho */
+          display: block;
+          margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
         }
-
         
         /* Contenedor de botones centrado */
         .cards {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            margin-top: 20px;
-            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          width: 100%;
+          margin-top: 20px;
+          flex-wrap: nowrap; /* Evita que se vayan a otra línea */
         }
 
         .cards .card {
-         width: 180px; /* 🔥 Reduce el ancho del botón */
-         height: 140px; /* 🔥 Reduce la altura del botón */
-         font-size: 14px; /* 🔥 Reduce el tamaño del texto */
+          width: 180px; /* 🔥 Reduce el ancho del botón */
+          height: 140px; /* 🔥 Reduce la altura del botón */
+          font-size: 14px; /* 🔥 Reduce el tamaño del texto */
         }
 
         /* Ajusta el tamaño de los íconos dentro de los botones */
          .cards .card i {
-         font-size: 22px; /* 🔥 Reduce el tamaño del icono */
-         margin-bottom: 5px;
+          font-size: 22px; /* 🔥 Reduce el tamaño del icono */
+          margin-bottom: 5px;
         }
         .cards .card {
-            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-            box-shadow: none !important;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
+          background: url('IMAGENES/ButtonReset.png') no-repeat center center;
+          box-shadow: none !important;
+          cursor: pointer;
+          transition: transform 0.2s ease-in-out;
        }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            width: 220px;
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.1);
+          width: 220px;
+          height: 150px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 8px;
+          transition: 0.3s;
+          cursor: pointer;
+          border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .card i {
-         font-size: 28px; /* Ajusta el tamaño del icono */
-         margin-right: 10px; /* Espacio entre icono y texto */
+          font-size: 28px; /* Ajusta el tamaño del icono */
+          margin-right: 10px; /* Espacio entre icono y texto */
         }
 
         .card:hover {
-            background: rgba(255, 60, 0, 0.8);
-            color: white;
-            transform: scale(1.05);
+          background: rgba(255, 60, 0, 0.8);
+          color: white;
+          transform: scale(1.05);
         }
 
         .video-container {
-         margin-top: 20px; /* Espaciado entre los botones y el video */
-         display: flex;
-         justify-content: center;
-         align-items: center;
+          margin-top: 20px; /* Espaciado entre los botones y el video */
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .video-container video {
-         width: 80%; /* Ajusta el ancho del video */
-         max-width: 600px; /* Tamaño máximo del video */
-         border-radius: 10px; /* Bordes redondeados */
-         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+          width: 80%; /* Ajusta el ancho del video */
+          max-width: 600px; /* Tamaño máximo del video */
+          border-radius: 10px; /* Bordes redondeados */
+          box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
         }
-
-        .widget-button {
-         background: none; /* ❌ Elimina el color de fondo */
-         border: none; /* ❌ Elimina cualquier borde */
-         padding: 12px;
-         border-radius: 0px; /* 🔳 Lo hace completamente cuadrado */
-         cursor: pointer;
-         position: fixed;
-         bottom: 20px;
-         right: 60px;
-         width: 60px; /* Ajusta el tamaño */
-         height: 60px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         transition: transform 0.3s ease-in-out;
-        }
-
-        .widget-button:hover {
-         transform: scale(1.1);
-         box-shadow: none; /* ❌ Elimina cualquier sombra */
-        }
-
-        .widget-icon {
-         width: 640px; /* Ajusta el tamaño del ícono */
-         height: 640px;
-        }
-
-        .tooltip {
-        visibility: hidden;
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 5px;
-        border-radius: 5px;
-        position: absolute;
-        bottom: 70px;
-        right: 10px;
-        font-size: 12px;
-        transition: opacity 0.3s ease-in-out;
-        opacity: 0;
-        white-space: nowrap;
-    }
-
-    .widget-button:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
-
     </style>
+
 </head>
 <body>
     <div class="header">
-        <a href="inicio.html"><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
-        <div class="title"></div> <!-- Título centrado -->
-        <button class="widget-button" onclick="abrirVentana()">
-            <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
-            <span class="tooltip">Habla con Clarity</span>
-        </button>
+        <a href="inicio.html">
+            <img src="IMAGENES/LogoReset.png" alt="Logo" class="logo">
+        </a>
     </div>
-    
-    <script>
-        function abrirVentana() {
-            var width = 500;
-            var height = 600;
-            var screenWidth = window.screen.width;
-            var screenHeight = window.screen.height;
-            var left = (screenWidth - width) / 2;
-            var top = (screenHeight - height) / 2;
-    
-            window.open(
-                'https://elevenlabs.io/app/talk-to?agent_id=qLet39dCFhoD4MljA1U6', 
-                'Widget', 
-                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes'
-            );
-        }
-    </script>     
-       
-
     <!-- Menú lateral -->
     <div class="sidebar">
         <div class="logo-container">
@@ -329,7 +243,6 @@
         </div>
         <p style="text-align: center; font-weight: bold;">Artesanos</p>
         <p style="text-align: center; font-weight: bold;">-----------------------</p>
-
         <div class="menu">
             <ul>
                 <li onclick="showSection('neuromarketing')"><i class="fas fa-brain"></i> Neuromarketing</li>
@@ -345,7 +258,6 @@
         </div>
         <p style="text-align: center; font-weight: bold;">Corpus de Entrenamiento</p>
         <p style="text-align: center; font-weight: bold;">-----------------------</p>
-
         <div class="menu">
             <ul>
                 <li onclick="showSection('neuroband')"><i class="fas fa-lightbulb"></i> Neuroband</li>
@@ -394,9 +306,6 @@
                     </video>
                     <video id="video3" controls>
                         <source src="IMAGENES/MariaCatalystEstrategia (1).mp4" type="video/mp4">
-                    </video>
-                    <video id="video3" controls>
-                        <source src="IMAGENES/caption (1).mp4" type="video/mp4">
                     </video>
                 </div>
                 <button class="next-btn" onclick="nextVideo()">&#10095;</button> <!-- Botón siguiente -->
@@ -473,20 +382,12 @@
         showVideo(currentVideoIndex);
     }
     </script>
-    
-
         <div id="ventas-comercial" class="section">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Ventas & Comercial</h2>
             <div class="cards">
                 <div class="card"><i class="fas fa-handshake"></i><p>Negociación</p></div>
-        
-                <!-- Botón que abrirá el Chatbot -->
-                <div class="card" id="gestionEquiposBtn">
-                    <i class="fas fa-users"></i>
-                    <p>Gestión de Equipos</p>
-                </div>
-        
+                <div class="card" id="gestionEquiposBtn"><i class="fas fa-users"></i><p>Gestión de Equipos</p></div>
                 <div class="card"><i class="fas fa-dollar-sign"></i><p>Estrategias de Venta</p></div>
             </div>    
         
@@ -506,8 +407,6 @@
             document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("gestionEquiposBtn").addEventListener("click", function() {
                     let chatbotContainer = document.getElementById("chatbot-container");
-        
-                    // Alternar visibilidad del chatbot
                     chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
                 });
             });
@@ -516,7 +415,7 @@
         
         <style>
             /* Estilos del contenedor del chatbot */
-            #chatbot-container {
+        #chatbot-container {
          text-align: center;
          padding: 10px; /* 🔹 Reduce el espacio interno */
          background: rgba(255, 255, 255, 0.9);
@@ -534,30 +433,22 @@
         }
     </style>
           
-        <div id="servicio-cliente" class="section">
+          <div id="servicio-cliente" class="section">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Servicio al Cliente</h2>
             <div class="cards">
-                <!-- Tarjeta para subir archivos -->
                 <div class="card">
                     <i class="fas fa-folder-open"></i>
                     <p>Atiende & Mejora Cobranza</p>
-        
-                    <!-- Botón único de subida -->
                     <input type="file" id="fileInput" style="display:none;" required>
                     <button id="uploadButton">Seleccionar y Subir Archivo</button>
-        
-                    <p id="statusMessage"></p> <!-- Mensaje de estado -->
+                    <p id="statusMessage"></p> 
                 </div>
-        
-                <!-- Tarjeta para abrir el chat -->
                 <div class="card" onclick="openChatWindow()" style="cursor:pointer;">
                     <i class="fas fa-user-tie"></i>
                     <p>Mejora la Atención al Cliente</p>
                 </div>
-        
-                <!-- Tarjeta para identificar audiencias -->
-                <div class="card">
+                <div class="card" onclick="openAudienceWindow()" style="cursor:pointer;">
                     <i class="fas fa-calendar-alt"></i>
                     <p>Identifica Audiencias</p>
                 </div>
@@ -565,10 +456,8 @@
         </div>
         
         <script>
-            // 📌 Reemplaza con la URL de tu script de Google Apps Script
             const scriptURL = "https://script.google.com/macros/s/TU_SCRIPT_ID/exec";
         
-            // Manejo de eventos del botón y carga de archivo
             document.getElementById("uploadButton").addEventListener("click", function() {
                 document.getElementById("fileInput").click();
             });
@@ -583,8 +472,7 @@
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = async function() {
-                    const base64Data = reader.result.split(',')[1]; // Extraer solo los datos en Base64
-        
+                    const base64Data = reader.result.split(',')[1];
                     const formData = {
                         file: base64Data,
                         fileName: file.name,
@@ -613,7 +501,6 @@
                 };
             });
         
-            // Función para abrir chat
             function openChatWindow() {
                 var width = 500;
                 var height = 600;
@@ -628,44 +515,46 @@
                     `width=${width},height=${height},left=${left},top=${top},resizable=yes`
                 );
             }
-        </script>
-
-        <div id="talento-humano" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Talento Humano</h2>
-            <div class="cards">
-                <div class="card"><i class="fas fa-users-cog"></i><p>Gestión del Talento</p></div>
-                <div class="card"><i class="fas fa-chart-line"></i><p>Desarrollo Profesional</p></div>
-                <div class="card"><i class="fas fa-hand-holding-heart"></i><p>Bienestar Laboral</p></div>
-            </div>
-        </div>
-
-        <div id="talento-humano" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Talento Humano</h2>
-            <div class="cards">
-                <!-- Primer botón que enviará el correo -->
-                <div class="card" id="enviarCorreoBtn">
-                    <i class="fas fa-users-cog"></i>
-                    <p>Gestión del Talento</p>
-                </div>
         
-                <div class="card"><i class="fas fa-chart-line"></i><p>Desarrollo Profesional</p></div>
-                <div class="card"><i class="fas fa-hand-holding-heart"></i><p>Bienestar Laboral</p></div>
-            </div>
-        </div>
+            function openAudienceWindow() {
+                var width = 500;
+                var height = 600;
+                var screenWidth = window.screen.width;
+                var screenHeight = window.screen.height;
+                var left = (screenWidth - width) / 2;
+                var top = (screenHeight - height) / 2;
         
-        <script>
-        document.getElementById("enviarCorreoBtn").addEventListener("click", function() {
-            fetch("https://script.google.com/macros/s/AKfycbymqeY1Abtt_Rzg2aoXhDL7uu3o58ovQxaalNW0ETPkwA4DdPRYhpk6hSiIfmCD49xH/exec") 
-            .then(response => response.text())
-            .then(data => alert("✅ " + data)) // Mensaje de éxito o error
-            .catch(error => alert("❌ Error: " + error));
-        });
+                window.open(
+                    'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
+                    'AudienceWindow', 
+                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+                );
+            }
         </script>
         
 
-        
+<div id="talento-humano" class="section">
+    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+    <h2>Talento Humano</h2>
+    <div class="cards">
+        <!-- Primer botón que enviará el correo -->
+        <div class="card" id="enviarCorreoBtn"><i class="fas fa-users-cog"></i><p>Gestión del Talento</p></div>
+        <div class="card"><i class="fas fa-chart-line"></i><p>Desarrollo Profesional</p></div>
+        <div class="card" id="abrir-convai" style="cursor: pointer;"><i class="fas fa-hand-holding-heart"></i><p>Bienestar Laboral</p></div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("abrir-convai").addEventListener("click", function() {
+        const url = "https://elevenlabs.io/app/talk-to?agent_id=ME4s8ZKm8JSBfwclk6Dk";
+        const ancho = 800;
+        const alto = 600;
+        const left = (window.innerWidth - ancho) / 2;
+        const top = (window.innerHeight - alto) / 2;
+        window.open(url, "ElevenLabsConvai", `width=${ancho},height=${alto},top=${top},left=${left},resizable=yes,scrollbars=yes`);
+    });
+</script>
+      
         <div id="formacion" class="section">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Formación</h2>
@@ -705,8 +594,8 @@
                 <div class="card"><i class="fas fa-book-open"></i><p>Recursos Educativos</p></div>
             </div>
         </div>
-        
         <style>
+
         .dropdown-container {
             display: flex;
             flex-direction: column;
@@ -832,29 +721,7 @@
     if (selectedItem) {
         selectedItem.classList.add("active");
     }
-}
+    }
     </script>
-
-<div id="ayuda" class="section">
-    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-    <h2>Ayuda Agente IA Clarity </h2>
-    <div class="cards">
-        <div class="card"><i class="fas fa-questions-circle"></i><p>AYUDA CLARITY</p></div>
-    </div>
-    
-<script
-type="module"
-src="https://agent.d-id.com/v1/index.js"
-data-name="did-agent"
-data-mode="fabio"
-data-client-key="Z29vZ2xlLW9hdXRoMnwxMDg0MTMyNjU2NDIwNDY0MTI5MTE6YmhTRmVSdUtJOHc3RG95WmphcXVX"
-data-agent-id="agt_AMZ2YTdC"
-data-monitor="true">
-</script>
-
-
-</div>
 </body>
 </html>
-
-
