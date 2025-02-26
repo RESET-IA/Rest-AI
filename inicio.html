@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESET® - AGENTES IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .header {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        body {
+            width: 100vw;
+            height: 120vh;
+            background-image: url('IMAGENES/FONDO.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-y: auto; /* Permite desplazamiento */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Menú lateral */
+        .sidebar {
+            width: 280px;
+            height: 125vh; /* Fija el tamaño a la pantalla */
+            background: rgba(139, 0, 0, 0.3);
+            padding: 20px;
+            display: flex;
+            position: absolute; /* Cambiado de fixed a absolute */
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+            flex-direction: column;
+            color: white;
+            position: relative; /* No se superpone */
+        }
+
+        .sidebar.open {
+            left: -280px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 180px;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff3c00;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu li i {
+            margin-right: 10px;
+        }
+
+        .menu li:hover, 
+        .menu li.active {
+            background: #ff3c00;
+            color: white;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgb(247, 242, 242);
+        }
+
+        .section {
+          display: none;
+          width: 80%; /* Ajusta el tamaño del contenedor */
+          max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+          text-align: center;
+          padding: 20px;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 10px;
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+          position: absolute;
+          top: 68%;
+          left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
+          transform: translate(-50%, -50%);
+        }
+
+        /* Ajuste de la imagen dentro de la sección */
+        .section img {
+          width: 40%; /* Reduce el tamaño de la imagen */
+          max-width: 250px; /* Límite máximo de ancho */
+          display: block;
+          margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
+        }
+        
+        /* Contenedor de botones centrado */
+        .cards {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          width: 100%;
+          margin-top: 20px;
+          flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+        }
+
+        .cards .card {
+          width: 180px; /* 🔥 Reduce el ancho del botón */
+          height: 140px; /* 🔥 Reduce la altura del botón */
+          font-size: 14px; /* 🔥 Reduce el tamaño del texto */
+        }
+
+        /* Ajusta el tamaño de los íconos dentro de los botones */
+         .cards .card i {
+          font-size: 22px; /* 🔥 Reduce el tamaño del icono */
+          margin-bottom: 5px;
+        }
+        .cards .card {
+          background: url('IMAGENES/ButtonReset.png') no-repeat center center;
+          box-shadow: none !important;
+          cursor: pointer;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        h2 {color: white; /* Asegura que los títulos estén en blanco */}
+
+        .card {
+          background: rgba(255, 255, 255, 0.1);
+          width: 220px;
+          height: 150px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 8px;
+          transition: 0.3s;
+          cursor: pointer;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: white; /* Asegura que el texto esté en blanco */
+        }
+
+        .card i {
+          font-size: 28px; /* Ajusta el tamaño del icono */
+          margin-right: 10px; /* Espacio entre icono y texto */
+        }
+
+        .card:hover {
+          background: rgba(255, 60, 0, 0.8);
+          color: white;
+          transform: scale(1.05);
+        }
+
+        .main.hidden {
+            display: none;
+        }
+
+        @media (max-width: 1024px) { 
+            .sidebar {
+                position: absolute; /* Para que todo se mueva junto */
+                left: -280px;
+                transition: left 0.3s ease-in-out;
+                height: 120vh;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                color: rgb(247, 242, 242);
+            }
+
+            .section {
+                display: none;
+                width: 80%; /* Ajusta el tamaño del contenedor */
+                max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+                text-align: center;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+                position: absolute;
+                top: 68%;
+                left: 50%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
+                transform: translate(-50%, -50%);
+                }
+
+            body {
+                width: 100vw; /* Evita desbordamientos horizontales */
+                height: 120vh;
+                overflow-x: hidden;
+                display: flex;
+                justify-content: center;
+                overflow-y: auto; /* Permite desplazamiento */
+            }
+        }
+
+            /* En pantallas grandes (PC), el menú estará visible y fijo */
+            @media (min-width: 1025px) {
+                .sidebar {
+                    width: 280px;
+                    height: 125vh; /* Fija el tamaño a la pantalla */
+                    background: rgba(139, 0, 0, 0.3);
+                    padding: 20px;
+                    display: flex;
+                    position: absolute; /* Cambiado de fixed a absolute */
+                    flex-direction: column;
+                    top: 0;
+                    left: 0;
+                    transition: left 0.3s ease-in-out;
+                    z-index: 1000;
+                    flex-direction: column;
+                    color: white;
+                    position: relative; /* No se superpone */
+                }
+                .main {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    color: rgb(247, 242, 242);
+                }
+
+                .section {
+                    display: none;
+                    width: 80%;  /* Usa un ancho flexible */
+                    max-width: 600px; /* Limita el ancho máximo */
+                    text-align: center;
+                    padding: 20px;
+                    background: rgba(0, 0, 0, 0.7);
+                    border-radius: 10px;
+                    color: white;
+                }
+
+                body {
+                width: 100vw; /* Evita desbordamientos horizontales */
+                min-height: 125vh;
+                overflow-x: hidden;
+                overflow-y: auto; /* Permite desplazamiento */
+                display: flex;
+                justify-content: center;
+            }
+
+                .menu-toggle {
+                    display: none;
+                }
+
+            }
+
+    .video-container video {
+        width: 100%; /* El video ocupa el 100% del contenedor */
+        height: auto; /* Mantiene la proporción */
+    }
+
+    .logo-container {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .menu-logo {
+            width: 250px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <!-- Menú lateral -->
+    <div class="sidebar">
+        <div class="header">
+            <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
+            <div class="title"></div> <!-- Título centrado -->
+        </div>
+
+        <div class="logo-container">
+            <img src="IMAGENES/BotonActivaAutomatizacion.png" alt="Logo Artesanos" class="menu-logo">
+        </div>
+
+        <p style="text-align: center; font-weight: bold;">Artesanos</p>
+        <br>
+        <div class="menu">
+            <ul>
+                <li onclick="showSection('neuromarketing')"><i class="fas fa-brain"></i> Neuromarketing</li>
+                <li onclick="showSection('ventas-comercial')"><i class="fas fa-chart-line"></i> Ventas & Comercial</li>
+                <li onclick="showSection('talento-humano')"><i class="fas fa-users"></i> Talento Humano</li>
+                <li onclick="showSection('formacion')"><i class="fas fa-graduation-cap"></i> Formación</li>
+                <br>
+            </ul>                
+        </div>
+        <div class="logo-container">
+            <img src="IMAGENES/BotonCerebro.png" alt="Logo Corpus de Entrenamiento" class="menu-logo">
+        </div>
+        <p style="text-align: center; font-weight: bold;">Corpus de Entrenamiento</p>
+        <br>
+        <div class="menu">
+            <ul>
+                <li onclick="showSection('neuroband')"><i class="fas fa-lightbulb"></i> Neuroband</li>
+                <li onclick="showSection('cultura-adn')"><i class="fas fa-users"></i> Cultura ADN Company</li>
+                <li onclick="showSection('business-challenge')"><i class="fas fa-briefcase"></i> Business Challenge</li>
+                <li onclick="showSection('people-analytics')"><i class="fas fa-chart-bar"></i> People Analytics</li>
+                <li onclick="showSection('ayuda')"><i class="fas fa-question-circle"></i> Ayuda</li>
+            </ul>          
+        </div>
+    </div>
+
+    <script>
+        var vapiInstance = null;
+        const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
+        const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
+        const buttonConfig = {
+                position: "top-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+                offset: "40px", // decide how far the button should be from the edge
+                width: "50px", // min-width of the button
+                height: "50px", // height of the button
+                idle: { // button state when the call is not active.
+                    color: `rgb(255, 102, 0)`, // Negro
+                    type: "pill", // or "round"
+                    title: "Servicio al Cliente", // only required in case of Pill
+                    subtitle: "Habla con nuestro Asistente", // only required in case of pill
+                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone.svg`,
+                },
+                loading: { // button state when the call is connecting
+                    color: `rgb(255, 102, 0)`, // Naranja
+                    type: "pill", // or "round"
+                    title: "Conectando...", // only required in case of Pill
+                    subtitle: "Espera un momento", // only required in case of pill
+                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+                },
+                active: { // button state when the call is in progress or active.
+                    color: `rgb(255, 85, 0)`, // Naranja más oscuro
+                    type: "pill", // or "round"
+                    title: "Llamada en progreso...", // only required in case of Pill
+                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
+                },
+        };
+      
+        (function (d, t) {
+          var g = document.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+          g.src =
+            "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+          g.defer = true;
+          g.async = true;
+          s.parentNode.insertBefore(g, s);
+      
+          g.onload = function () {
+            vapiInstance = window.vapiSDK.run({
+              apiKey: apiKey, // mandatory
+              assistant: assistant, // mandatory
+              config: buttonConfig, // optional
+            });
+          };
+        })(document, "script");
+    
+        vapiInstance.on('speech-start', () => {
+            console.log('Speech has started');
+        });
+    
+        vapiInstance.on('speech-end', () => {
+            console.log('Speech has ended');
+        });
+    
+        vapiInstance.on('call-start', () => {
+            console.log('Call has started');
+        });
+    
+        vapiInstance.on('call-end', () => {
+            console.log('Call has stopped');
+        });
+    
+        vapiInstance.on('volume-level', (volume) => {
+            console.log(`Assistant volume level: ${volume}`);
+        });
+    
+        // Function calls and transcripts will be sent via messages
+        vapiInstance.on('message', (message) => {
+            console.log(message);
+        });
+    
+        vapiInstance.on('error', (e) => {
+            console.error(e)
+        });
+      </script>
+
+  <!-- Contenido dinámico -->
+  <div class="main">
+    <div id="neuromarketing" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Neuromarketing</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-bullhorn"></i><p>Estrategia Publicitaria</p></div>
+            <div class="card"><i class="fas fa-magnet"></i><p>Psicología del Consumidor</p></div>
+            <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Datos</p></div>
+        </div>
+
+        <!-- Carrusel de videos -->
+        <div class="video-carousel">
+            <button class="prev-btn" onclick="prevVideo()">&#10094;</button> <!-- Botón atrás -->
+            <div class="video-container">
+                <video id="video1" controls>
+                    <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
+                </video>
+                <video id="video2" controls>
+                    <source src="IMAGENES/LeonellaCatalystTransformacion (1).mp4" type="video/mp4">
+                </video>
+                <video id="video3" controls>
+                    <source src="IMAGENES/PabloCatalystEstrategia (1).mp4" type="video/mp4">
+                </video>
+                <video id="video3" controls>
+                    <source src="IMAGENES/MariaCatalystEstrategia (1).mp4" type="video/mp4">
+                </video>
+            </div>
+            <button class="next-btn" onclick="nextVideo()">&#10095;</button> <!-- Botón siguiente -->
+        </div>
+    </div>
+</div>
+
+<style>
+/* Estilos del carrusel */
+.video-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+/* Ocultar todos los videos por defecto */
+.video-container video {
+    display: none;
+    width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Mostrar solo el primer video por defecto */
+.video-container video:first-child {
+    display: block;
+}
+
+/* Estilos de los botones de navegación */
+.prev-btn, .next-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-btn { left: -50px; } /* Posición del botón "Atrás" */
+.next-btn { right: -50px; } /* Posición del botón "Siguiente" */
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+</style>
+
+<script>
+let currentVideoIndex = 0;
+const videos = document.querySelectorAll('.video-container video');
+
+function showVideo(index) {
+    videos.forEach((video, i) => {
+        video.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+function nextVideo() {
+    currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+    showVideo(currentVideoIndex);
+}
+
+function prevVideo() {
+    currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+    showVideo(currentVideoIndex);
+}
+</script>
+    <div id="ventas-comercial" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Ventas & Comercial</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-handshake"></i><p>Negociación</p></div>
+            <div class="card" id="gestionEquiposBtn"><i class="fas fa-users"></i><p>Gestión de Equipos</p></div>
+            <div class="card"><i class="fas fa-dollar-sign"></i><p>Estrategias de Venta</p></div>
+        </div>    
+    
+        <!-- Contenedor donde aparecerá el chatbot -->
+        <div id="chatbot-container" style="display: none; width: 100%; margin-top: 20px;">
+            <h2>Asistente IA</h2>
+            <iframe 
+                id="chatbot-iframe"
+                src="https://www.chatbase.co/chatbot-iframe/rIlh50slfkvlA5RgViqdr"
+                width="100%"
+                style="height: 600px; border-radius: 10px; border: none;"
+            ></iframe>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("gestionEquiposBtn").addEventListener("click", function() {
+                let chatbotContainer = document.getElementById("chatbot-container");
+                chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
+            });
+        });
+    </script>
+    
+    
+    <style>
+        /* Estilos del contenedor del chatbot */
+    #chatbot-container {
+     text-align: center;
+     padding: 10px; /* 🔹 Reduce el espacio interno */
+     background: rgba(255, 255, 255, 0.9);
+     border-radius: 10px;
+     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+     max-width: 400px; /* 🔥 Reduce el ancho del chatbot */
+     margin: 20px auto;
+   }
+
+   #chatbot-iframe {
+     width: 100%;
+     height: 300px; /* 🔥 Reduce la altura del chatbot */
+     max-height: 300px;
+     border: none;
+    }
+</style>
+
+
+<script>
+const scriptURL = "https://hook.us2.make.com/y6xd2m8oacqmel7yhlbrncy25grk39ig";
+document.getElementById("uploadButton").addEventListener("click", function() {
+    document.getElementById("fileInput").click();
+});
+
+document.getElementById("fileInput").addEventListener("change", async function() {
+    const file = this.files[0];
+    if (!file) {
+        alert("⚠️ Selecciona un archivo para subir.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async function() {
+        const base64Data = reader.result.split(',')[1];
+        const formData = {
+            file: base64Data,
+            fileName: file.name,
+            mimeType: file.type
+        };
+
+        document.getElementById("statusMessage").textContent = "🔄 Subiendo archivo...";
+
+        try {
+            const response = await fetch(scriptURL, {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                document.getElementById("statusMessage").innerHTML = `✅ Archivo subido con éxito: <a href="${result.fileUrl}" target="_blank">Ver archivo en la nube</a>`;
+            } else {
+                document.getElementById("statusMessage").textContent = "❌ Error al subir el archivo.";
+            }
+        } catch (error) {
+            document.getElementById("statusMessage").textContent = "⚠️ Error en la conexión: " + error.message;
+            console.error("Error:", error);
+        }
+    };
+});
+
+function openAudienceWindow() {
+    var width = 500;
+    var height = 600;
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+    var left = (screenWidth - width) / 2;
+    var top = (screenHeight - height) / 2;
+
+    window.open(
+        'https://elevenlabs.io/app/talk-to?agent_id=7ewdvvsHk5xE9JfgcTiq', 
+        'AudienceWindow', 
+        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+    );
+}
+</script>
+
+<div id="talento-humano" class="section">
+<img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+<h2>Talento Humano</h2>
+<div class="cards">
+    <div class="card"><i class="fas fa-chalkboard-teacher"></i><p>Formación Continua</p></div>
+    <div class="card"><i class="fas fa-comments"></i><p>Comunicación Efectiva</p></div>
+    <div class="card"><i class="fas fa-briefcase"></i><p>Gestión del Desempeño</p></div>
+</div>
+</div>
+
+
+<div id="formacion" class="section">
+<img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+<h2>Formación</h2>
+<div class="cards">
+    <div class="card" style="position: relative;">
+        <i class="fas fa-graduation-cap"></i>
+        <p>Atiende & Mejora Cobranza</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <p>Mentoría y Coaching</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-book-open"></i>
+        <p>Recursos Educativos</p>
+    </div>
+</div>
+</div>
+
+<!-- Contenido dinámico -->
+<div class="main">
+    <div id="neuroband" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Neuroband</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-lightbulb"></i><p>Creatividad e Innovación</p></div>
+            <div class="card"><i class="fas fa-bullhorn"></i><p>Posicionamiento de Marca</p></div>
+            <div class="card"><i class="fas fa-chart-line"></i><p>Estrategia Digital</p></div>
+        </div>
+    </div>
+
+    <div id="cultura-adn" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Cultura ADN Company</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-users"></i><p>Gestión del Cambio</p></div>
+            <div class="card"><i class="fas fa-handshake"></i><p>Valores Corporativos</p></div>
+            <div class="card"><i class="fas fa-users-cog"></i><p>Construcción de Equipos</p></div>
+        </div>
+    </div>
+
+    <div id="business-challenge" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Business Challenge</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-tasks"></i><p>Innovación Empresarial</p></div>
+            <div class="card"><i class="fas fa-briefcase"></i><p>Casos de Negocio</p></div>
+            <div class="card"><i class="fas fa-bullseye"></i><p>Optimización de Procesos</p></div>
+        </div>
+    </div>
+
+    <div id="people-analytics" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>People Analytics</h2>
+        <div class="cards">
+            <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Talento</p></div>
+            <div class="card"><i class="fas fa-database"></i><p>Gestión de Datos</p></div>
+            <div class="card"><i class="fas fa-search"></i><p>Predicción de Rendimiento</p></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSection(sectionId) {
+    // Oculta todas las secciones antes de mostrar la deseada
+    document.querySelectorAll('.section').forEach(section => section.style.display = "none");
+
+    // Muestra la sección seleccionada
+    document.getElementById(sectionId).style.display = "block";
+
+    // Remueve la clase "active" de todos los elementos del menú
+    document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
+
+    // Agrega la clase "active" al botón que fue presionado
+    let selectedItem = document.querySelector(`li[onclick="showSection('${sectionId}')"]`);
+    if (selectedItem) {
+        selectedItem.classList.add("active");
+    }
+
+    // Si está en móvil/tablet, oculta el menú al seleccionar una opción
+    if (window.innerWidth <= 1024) {
+        document.querySelector(".sidebar").classList.remove("open"); // 🔥 Corrección aquí
+    }
+}
+
+function toggleMenu() {
+    const sidebar = document.querySelector(".sidebar"); // 🔥 Corrección aquí
+    const mainContent = document.querySelector(".main");
+    
+    sidebar.classList.toggle("open"); // ✅ Ahora sí alterna correctamente
+
+    if (mainContent) {
+        mainContent.classList.toggle("hidden", sidebar.classList.contains("open"));
+    }
+}
+
+// Función para manejar el clic en los elementos del menú
+document.querySelectorAll(".menu li").forEach(item => {
+    item.addEventListener("click", function() {
+        document.querySelector(".sidebar").classList.remove("open"); // 🔥 Corrección aquí
+        const mainContent = document.querySelector(".main");
+        if (mainContent) {
+            mainContent.classList.remove("hidden"); // Muestra el contenido si existe
+        }
+    });
+});
+
+
+</script>
+
+<div id="ayuda" class="section">
+<img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+<h2>Centro de Ayuda</h2>
+<div class="cards">
+    <div class="card" onclick="openHelpWindow()" style="cursor:pointer;">
+        <i class="fas fa-info-circle"></i>
+        <p>Soporte General</p>
+    </div>
+    <div class="card" onclick="openFAQWindow()" style="cursor:pointer;">
+        <i class="fas fa-question"></i>
+        <p>Preguntas Frecuentes</p>
+    </div>
+    <div class="card" onclick="openChatSupport()" style="cursor:pointer;">
+        <i class="fas fa-comments"></i>
+        <p>Asistencia en Vivo</p>
+    </div>
+</div>
+</div>
+
+<script>
+function openHelpWindow() {
+var width = 500;
+var height = 600;
+var screenWidth = window.screen.width;
+var screenHeight = window.screen.height;
+var left = (screenWidth - width) / 2;
+var top = (screenHeight - height) / 2;
+
+window.open(
+    'https://elevenlabs.io/app/talk-to?agent_id=7ewdvvsHk5xE9JfgcTiq', 
+    'HelpWindow', 
+    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+);
+}
+
+function openFAQWindow() {
+alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
+}
+
+function openChatSupport() {
+var width = 500;
+var height = 600;
+var screenWidth = window.screen.width;
+var screenHeight = window.screen.height;
+var left = (screenWidth - width) / 2;
+var top = (screenHeight - height) / 2;
+
+window.open(
+    'https://elevenlabs.io/app/talk-to?agent_id=7ewdvvsHk5xE9JfgcTiq', 
+    'ChatSupportWindow', 
+    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+);
+}
+</script>
+
+</body>
+</html>
+
