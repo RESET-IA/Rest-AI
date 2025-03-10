@@ -6,346 +6,21 @@
     <title>RESET® - AGENTES IA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        body {
-            background-image: url('IMAGENES/FONDO.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin-top: 30px; /* Espacio suficiente para la cabecera */
-        }
-        
-        .header {
-            width: 100%;
-            height: 100px;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-right {
-           display: flex;
-           align-items: center;
-        }
-
-        .logo {
-           height: 160px; /* Ajusta el tamaño del logo */
-           max-width: 200px;
-        }
-
-        .header img {
-          height: 60px; /* Ajusta el tamaño del logo */
-          max-width: 200px;
-        }
-
-        /* Menú lateral */
-        .sidebar {
-          width: 280px;
-          background: rgba(139, 0, 0, 0.3);
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          color: white;
-          position: relative; /* No se superpone */
-        }
-
-        .logo-container {
-          text-align: center;
-          margin-bottom: 30px;
-        }
-
-        .logo {
-          width: 180px;
-        }
-
-        .menu ul {
-          list-style: none;
-          padding: 0;
-        }
-
-        .menu ul {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: right;
-          padding: 0;
-          margin: 0;
-        }
-
-        .menu li {
-          display: flex;
-          align-items: right;
-          padding: 12px;
-          font-size: 16px;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: 0.3s;
-          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .menu li i {
-          margin-right: 10px;
-        }
-
-        .menu li:hover, 
-        .menu li.active {
-          background: #ff3c00;
-          color: white;
-          transform: scale(1.05);
-        }
-
-        /* Contenedor principal */
-        .main {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          color: rgb(247, 242, 242);
-        }
-
-        .section {
-          display: none;
-          width: 50%; /* Ajusta el tamaño del contenedor */
-          max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
-          text-align: center;
-          padding: 30px;
-          background: rgba(0, 0, 0, 0.8);
-          border-radius: 15px;
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-          position: absolute;
-          top: 50%;
-          left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
-          transform: translate(-50%, -50%);
-        }
-
-        /* Ajuste de la imagen dentro de la sección */
-        .section img {
-          width: 40%; /* Reduce el tamaño de la imagen */
-          max-width: 250px; /* Límite máximo de ancho */
-          display: block;
-          margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
-        }
-        
-        /* Contenedor de botones centrado */
-        .cards {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 20px;
-          width: 100%;
-          margin-top: 20px;
-          flex-wrap: nowrap; /* Evita que se vayan a otra línea */
-        }
-
-        .cards .card {
-          width: 180px; /* 🔥 Reduce el ancho del botón */
-          height: 140px; /* 🔥 Reduce la altura del botón */
-          font-size: 14px; /* 🔥 Reduce el tamaño del texto */
-        }
-
-        /* Ajusta el tamaño de los íconos dentro de los botones */
-         .cards .card i {
-          font-size: 22px; /* 🔥 Reduce el tamaño del icono */
-          margin-bottom: 5px;
-        }
-        .cards .card {
-          background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-          box-shadow: none !important;
-          cursor: pointer;
-          transition: transform 0.2s ease-in-out;
-        }
-
-        h2 {color: white; /* Asegura que los títulos estén en blanco */}
-
-        .card {
-          background: rgba(255, 255, 255, 0.1);
-          width: 220px;
-          height: 150px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          font-size: 16px;
-          font-weight: bold;
-          border-radius: 8px;
-          transition: 0.3s;
-          cursor: pointer;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          color: white; /* Asegura que el texto esté en blanco */
-        }
-
-        .card i {
-          font-size: 28px; /* Ajusta el tamaño del icono */
-          margin-right: 10px; /* Espacio entre icono y texto */
-        }
-
-        .card:hover {
-          background: rgba(255, 60, 0, 0.8);
-          color: white;
-          transform: scale(1.05);
-        }
-
-        @media (max-width: 1024px) { 
-            .sidebar {
-                position: absolute; /* Para que todo se mueva junto */
-                left: -280px;
-                transition: left 0.3s ease-in-out;
-                height: 120vh;
-            }
-
-            .sidebar.open {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .main {
-                flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                color: rgb(247, 242, 242);
-            }
-
-            .section {
-                display: none;
-                width: 80%; /* Ajusta el tamaño del contenedor */
-                max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
-                text-align: center;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.8);
-                border-radius: 10px;
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-                position: absolute;
-                top: 68%;
-                left: 50%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
-                transform: translate(-50%, -50%);
-                }
-
-            body {
-                width: 100vw; /* Evita desbordamientos horizontales */
-                height: 120vh;
-                overflow-x: hidden;
-                display: flex;
-                justify-content: center;
-                overflow-y: auto; /* Permite desplazamiento */
-            }
-        }
-
-            /* En pantallas grandes (PC), el menú estará visible y fijo */
-            @media (min-width: 1025px) {
-                .sidebar {
-                    width: 280px;
-                    height: 125vh; /* Fija el tamaño a la pantalla */
-                    background: rgba(139, 0, 0, 0.3);
-                    padding: 20px;
-                    display: flex;
-                    position: absolute; /* Cambiado de fixed a absolute */
-                    flex-direction: column;
-                    top: 0;
-                    left: 0;
-                    transition: left 0.3s ease-in-out;
-                    z-index: 1000;
-                    flex-direction: column;
-                    color: white;
-                    position: relative; /* No se superpone */
-                }
-                .main {
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    color: rgb(247, 242, 242);
-                }
-
-                .section {
-                    display: none;
-                    width: 80%;  /* Usa un ancho flexible */
-                    max-width: 600px; /* Limita el ancho máximo */
-                    text-align: center;
-                    padding: 20px;
-                    background: rgba(0, 0, 0, 0.7);
-                    border-radius: 10px;
-                    color: white;
-                }
-
-                body {
-                width: 100vw; /* Evita desbordamientos horizontales */
-                min-height: 125vh;
-                overflow-x: hidden;
-                overflow-y: auto; /* Permite desplazamiento */
-                display: flex;
-                justify-content: center;
-            }
-
-                .menu-toggle {
-                    display: none;
-                }
-
-            }
-
-        .video-container {
-          margin-top: 20px; /* Espaciado entre los botones y el video */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-             
-
-        .video-container video {
-          width: 80%; /* Ajusta el ancho del video */
-          max-width: 600px; /* Tamaño máximo del video */
-          border-radius: 10px; /* Bordes redondeados */
-          box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-        }        
-        
-        
-    </style>
-
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div class="header">
-        <a href="inicio.html">
-            <img src="IMAGENES/LogoReset.png" alt="Logo" class="logo">
-        </a>
+    <div class="top-header">
+        <div></div> <!-- Espacio vacío para centrar -->
+        <div class="right-header">
+        </div>
     </div>
-
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <!-- Menú lateral -->
     <div class="sidebar">
+        <a href="inicio.html">
+            <center><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></center>
+        </a>
+        <br>
         <div class="logo-container">
             <img src="IMAGENES/BotonActivaAutomatizacion.png" alt="Logo Artesanos" class="menu-logo">
         </div>
@@ -376,92 +51,88 @@
             </ul>          
         </div>
     </div>
-
-
-
-    <script>
-        var vapiInstance = null;
-        const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
-        const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-        const buttonConfig = {
-                position: "top-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
-                offset: "55px", // decide how far the button should be from the edge
-                width: "50px", // min-width of the button
-                height: "50px", // height of the button
-                idle: { // button state when the call is not active.
-                    color: `rgb(255, 102, 0)`, // Negro
-                    type: "pill", // or "round"
-                    title: "Servicio al Cliente", // only required in case of Pill
-                    subtitle: "Habla con Clarity", // only required in case of pill
-                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone.svg`,
-                },
-                loading: { // button state when the call is connecting
-                    color: `rgb(255, 102, 0)`, // Naranja
-                    type: "pill", // or "round"
-                    title: "Conectando...", // only required in case of Pill
-                    subtitle: "Espera un momento", // only required in case of pill
-                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
-                },
-                active: { // button state when the call is in progress or active.
-                    color: `rgb(255, 85, 0)`, // Naranja más oscuro
-                    type: "pill", // or "round"
-                    title: "Llamada en progreso...", // only required in case of Pill
-                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
-                },
-        };
+ <!-- Asistente -->
+ <script>
+    var vapiInstance = null;
+    const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
+    const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
+    const buttonIconURL = "IMAGENES/Cerebroconlentes.ico"; // Ruta correcta de la imagen
+    const buttonConfig = {
+            position: "top-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+            offset: "30px", // decide how far the button should be from the edge
+            width: "100px", // min-width of the button
+            height: "100px", // height of the button
+            idle: { // button state when the call is not active.
+                color: `rgb(214, 84, 0)`, // Negro
+                type: "round", // or "round"
+                title: "Servicio al Cliente", // only required in case of Pill
+                subtitle: "Habla con nuestro Asistente", // only required in case of pill
+                icon: buttonIconURL,
+            },
+            loading: { // button state when the call is connecting
+                color: `rgb(255, 102, 0)`, // Naranja
+                type: "round", // or "round"
+                title: "Conectando...", // only required in case of Pill
+                subtitle: "Espera un momento", // only required in case of pill
+                icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+            },
+            active: { // button state when the call is in progress or active.
+                color: `rgb(255, 85, 0)`, // Naranja más oscuro
+                type: "round", // or "round"
+                title: "Llamada en progreso...", // only required in case of Pill
+                icon: buttonIconURL,
+            },
+    };
+  
+    (function (d, t) {
+      var g = document.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+      g.src =
+        "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g, s);
+  
+      g.onload = function () {
+        vapiInstance = window.vapiSDK.run({
+          apiKey: apiKey, // mandatory
+          assistant: assistant, // mandatory
+          config: buttonConfig, // optional
+        });
+        
+      };
       
-        (function (d, t) {
-          var g = document.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-          g.src =
-            "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-          g.defer = true;
-          g.async = true;
-          s.parentNode.insertBefore(g, s);
-      
-          g.onload = function () {
-            vapiInstance = window.vapiSDK.run({
-              apiKey: apiKey, // mandatory
-              assistant: assistant, // mandatory
-              config: buttonConfig, // optional
-            });
-          };
-        })(document, "script");
-    
-        vapiInstance.on('speech-start', () => {
-            console.log('Speech has started');
-        });
-    
-        vapiInstance.on('speech-end', () => {
-            console.log('Speech has ended');
-        });
-    
-        vapiInstance.on('call-start', () => {
-            console.log('Call has started');
-        });
-    
-        vapiInstance.on('call-end', () => {
-            console.log('Call has stopped');
-        });
-    
-        vapiInstance.on('volume-level', (volume) => {
-            console.log(`Assistant volume level: ${volume}`);
-        });
-    
-        // Function calls and transcripts will be sent via messages
-        vapiInstance.on('message', (message) => {
-            console.log(message);
-        });
-    
-        vapiInstance.on('error', (e) => {
-            console.error(e)
-        });
-      </script>
+    })(document, "script");
 
+    vapiInstance.on('speech-start', () => {
+        console.log('Speech has started');
+    });
 
+    vapiInstance.on('speech-end', () => {
+        console.log('Speech has ended');
+    });
 
+    vapiInstance.on('call-start', () => {
+        console.log('Call has started');
+    });
 
+    vapiInstance.on('call-end', () => {
+        console.log('Call has stopped');
+    });
 
+    vapiInstance.on('volume-level', (volume) => {
+        console.log(`Assistant volume level: ${volume}`);
+    });
+
+    // Function calls and transcripts will be sent via messages
+    vapiInstance.on('message', (message) => {
+        console.log(message);
+    });
+
+    vapiInstance.on('error', (e) => {
+        console.error(e)
+    });
+  </script>
 
     <!-- 2 Logos del Menú -->
     <style>
@@ -507,55 +178,6 @@
             </div>
         </div>
     </div>
-    
-    <style>
-    /* Estilos del carrusel */
-    .video-carousel {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 80%;
-        margin: 20px auto;
-        max-width: 700px;
-    }
-    
-    /* Ocultar todos los videos por defecto */
-    .video-container video {
-        display: none;
-        width: 100%;
-        max-height: 400px;
-        border-radius: 10px;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Mostrar solo el primer video por defecto */
-    .video-container video:first-child {
-        display: block;
-    }
-    
-    /* Estilos de los botones de navegación */
-    .prev-btn, .next-btn {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        font-size: 24px;
-        padding: 10px 15px;
-        cursor: pointer;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    .prev-btn { left: -50px; } /* Posición del botón "Atrás" */
-    .next-btn { right: -50px; } /* Posición del botón "Siguiente" */
-    
-    .prev-btn:hover, .next-btn:hover {
-        background-color: rgba(255, 255, 255, 0.7);
-        color: black;
-    }
-    </style>
     
     <script>
     let currentVideoIndex = 0;
@@ -606,27 +228,6 @@
                 });
             });
         </script>
-        
-        
-        <style>
-            /* Estilos del contenedor del chatbot */
-        #chatbot-container {
-         text-align: center;
-         padding: 10px; /* 🔹 Reduce el espacio interno */
-         background: rgba(255, 255, 255, 0.9);
-         border-radius: 10px;
-         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-         max-width: 400px; /* 🔥 Reduce el ancho del chatbot */
-         margin: 20px auto;
-       }
-
-       #chatbot-iframe {
-         width: 100%;
-         height: 300px; /* 🔥 Reduce la altura del chatbot */
-         max-height: 300px;
-         border: none;
-        }
-    </style>
 
 <div id="servicio-cliente" class="section">
     <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
@@ -893,11 +494,58 @@
     document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
 
     // Agrega la clase "active" al botón que fue presionado
-    let selectedItem = document.querySelector(`li[onclick="showSection('${sectionId}')"]`);
+    let selectedItem = document.querySelector(`li[onclick="showSection('${sectionId}', event)"]`);
     if (selectedItem) {
         selectedItem.classList.add("active");
     }
+
+    // Si la pantalla es de móvil o tablet, cierra el menú y muestra el contenido principal
+    if (window.innerWidth <= 1024) {
+        const sidebar = document.querySelector(".sidebar");
+        const mainContent = document.querySelector(".main");
+        const chatButton = document.querySelector(".chat-button");
+
+        sidebar.classList.remove("open"); // Cierra el menú
+        mainContent.style.display = "block"; // Vuelve a mostrar el contenido
+        chatButton.style.display = "block"; // Muestra el botón de chat
+
+        // Desplaza suavemente la sección seleccionada al centro
+        setTimeout(() => {
+            document.getElementById(sectionId).scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
     }
+}
+
+function toggleMenu() {
+    const sidebar = document.querySelector(".sidebar");
+    const mainContent = document.querySelector(".main");
+    const chatButton = document.querySelector(".chat-button");
+
+    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo o cerrando
+
+    // Alterna la clase "open" para mostrar u ocultar el menú
+    sidebar.classList.toggle("open");
+
+    // Si se abre el menú, oculta el contenido y el chat
+    if (isOpening) {
+        mainContent.style.display = "none"; 
+        chatButton.style.display = "none";
+    } else {
+        mainContent.style.display = "block"; 
+        chatButton.style.display = "block";
+    }
+}
+
+// Agregar evento a las opciones del menú para registrar que se ha seleccionado una
+document.querySelectorAll(".menu li").forEach(item => {
+    item.addEventListener("click", function() {
+        document.querySelector(".sidebar").classList.remove("open"); // Oculta el menú
+        document.querySelector(".main").style.display = "block"; // Muestra el contenido
+        document.querySelector(".chat-button").style.display = "block"; // Muestra el chat
+    });
+});
+
+    
     </script>
 
 <div id="ayuda" class="section">
@@ -955,6 +603,27 @@ function openChatSupport() {
 }
 </script>
 
-    
+<!-- Botón flotante con imagen local -->
+<button id="chat-toggle" class="chat-button">
+    <img src="IMAGENES/Clarity_Pose4.png" alt="Chatbot Avatar">
+</button>    
+
+<!-- Contenedor del chatbot -->
+<div id="chat-container" class="chat-container">
+    <iframe src="https://studio.d-id.com/agents/share?id=agt_7xUKmJPL&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<script>
+    // Funcionalidad para mostrar/ocultar el chatbot
+    document.getElementById("chat-toggle").addEventListener("click", function () {
+        let chatContainer = document.getElementById("chat-container");
+        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+            chatContainer.style.display = "block";
+        } else {
+            chatContainer.style.display = "none";
+        }
+    });
+</script>
+
 </body>
 </html>
