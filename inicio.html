@@ -9,6 +9,44 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+    <style>
+        /* Estilos para el video de bienvenida */
+        .welcome-video {
+            position: fixed;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+        .welcome-video video {
+            width: 250%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+    <!-- Video de bienvenida -->
+    <div id="welcome-video-container" class="welcome-video">
+        <video id="welcome-video" autoplay muted>
+            <source src="IMAGENES/BIENVENIDA.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        // Ocultar el video de bienvenida después de 3 segundos
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById("welcome-video-container").style.display = "none";
+            }, 5000);
+        });
+    </script>
+
     <div class="top-header">
         <div></div> <!-- Espacio vacío para centrar -->
         <div class="right-header">
