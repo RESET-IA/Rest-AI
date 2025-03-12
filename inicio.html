@@ -37,15 +37,24 @@
             <source src="IMAGENES/BIENVENIDA.mp4" type="video/mp4">
         </video>
     </div>
-
+    
     <script>
-        // Ocultar el video de bienvenida después de 3 segundos
         document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                document.getElementById("welcome-video-container").style.display = "none";
-            }, 5000);
+            // Obtener todas las opciones del menú
+            let menuItems = document.querySelectorAll(".menu li");
+    
+            // Agregar evento a cada opción del menú para ocultar el video cuando se haga clic
+            menuItems.forEach(item => {
+                item.addEventListener("click", function() {
+                    let videoContainer = document.getElementById("welcome-video-container");
+                    if (videoContainer) {
+                        videoContainer.style.display = "none"; // Oculta el video
+                    }
+                });
+            });
         });
     </script>
+    
 
     <div class="top-header">
         <div></div> <!-- Espacio vacío para centrar -->
@@ -89,89 +98,7 @@
             </ul>          
         </div>
     </div>
- <!-- Asistente -->
- <script>
-    var vapiInstance = null;
-    const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
-    const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-    const buttonIconURL = "IMAGENES/Cerebroconlentes.ico"; // Ruta correcta de la imagen
-    const buttonConfig = {
-            position: "top-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
-            offset: "30px", // decide how far the button should be from the edge
-            width: "100px", // min-width of the button
-            height: "100px", // height of the button
-            idle: { // button state when the call is not active.
-                color: `rgb(214, 84, 0)`, // Negro
-                type: "round", // or "round"
-                title: "Servicio al Cliente", // only required in case of Pill
-                subtitle: "Habla con nuestro Asistente", // only required in case of pill
-                icon: buttonIconURL,
-            },
-            loading: { // button state when the call is connecting
-                color: `rgb(255, 102, 0)`, // Naranja
-                type: "round", // or "round"
-                title: "Conectando...", // only required in case of Pill
-                subtitle: "Espera un momento", // only required in case of pill
-                icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
-            },
-            active: { // button state when the call is in progress or active.
-                color: `rgb(255, 85, 0)`, // Naranja más oscuro
-                type: "round", // or "round"
-                title: "Llamada en progreso...", // only required in case of Pill
-                icon: buttonIconURL,
-            },
-    };
   
-    (function (d, t) {
-      var g = document.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-      g.src =
-        "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g, s);
-  
-      g.onload = function () {
-        vapiInstance = window.vapiSDK.run({
-          apiKey: apiKey, // mandatory
-          assistant: assistant, // mandatory
-          config: buttonConfig, // optional
-        });
-        
-      };
-      
-    })(document, "script");
-
-    vapiInstance.on('speech-start', () => {
-        console.log('Speech has started');
-    });
-
-    vapiInstance.on('speech-end', () => {
-        console.log('Speech has ended');
-    });
-
-    vapiInstance.on('call-start', () => {
-        console.log('Call has started');
-    });
-
-    vapiInstance.on('call-end', () => {
-        console.log('Call has stopped');
-    });
-
-    vapiInstance.on('volume-level', (volume) => {
-        console.log(`Assistant volume level: ${volume}`);
-    });
-
-    // Function calls and transcripts will be sent via messages
-    vapiInstance.on('message', (message) => {
-        console.log(message);
-    });
-
-    vapiInstance.on('error', (e) => {
-        console.error(e)
-    });
-  </script>
-
     <!-- 2 Logos del Menú -->
     <style>
         .logo-container {
@@ -664,6 +591,86 @@ document.querySelectorAll(".menu li").forEach(item => {
         }
     });
 </script>
+
+<script>
+    var vapiInstance = null;
+    const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
+    const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
+    const buttonIconURL = "Imagenes/Cerebroconlentes.ico"; // Ruta correcta de la imagen
+    const buttonConfig = {
+            position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+            offset: "30px", // decide how far the button should be from the edge
+            width: "100px", // min-width of the button
+            height: "100px", // height of the button
+            idle: { // button state when the call is not active.
+                color: `rgb(214, 84, 0)`, // Negro
+                type: "round", // or "round"
+                title: "Servicio al Cliente", // only required in case of Pill
+                subtitle: "Habla con nuestro Asistente", // only required in case of pill
+                icon: buttonIconURL,
+            },
+            loading: { // button state when the call is connecting
+                color: `rgb(255, 102, 0)`, // Naranja
+                type: "round", // or "round"
+                title: "Conectando...", // only required in case of Pill
+                subtitle: "Espera un momento", // only required in case of pill
+                icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+            },
+            active: { // button state when the call is in progress or active.
+                color: `rgb(255, 85, 0)`, // Naranja más oscuro
+                type: "round", // or "round"
+                title: "Llamada en progreso...", // only required in case of Pill
+                icon: buttonIconURL,
+            },
+    };
+  
+    (function (d, t) {
+      var g = document.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+      g.src =
+        "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g, s);
+  
+      g.onload = function () {
+        vapiInstance = window.vapiSDK.run({
+          apiKey: apiKey, // mandatory
+          assistant: assistant, // mandatory
+          config: buttonConfig, // optional
+        });
+      };
+    })(document, "script");
+
+    vapiInstance.on('speech-start', () => {
+        console.log('Speech has started');
+    });
+
+    vapiInstance.on('speech-end', () => {
+        console.log('Speech has ended');
+    });
+
+    vapiInstance.on('call-start', () => {
+        console.log('Call has started');
+    });
+
+    vapiInstance.on('call-end', () => {
+        console.log('Call has stopped');
+    });
+
+    vapiInstance.on('volume-level', (volume) => {
+        console.log(`Assistant volume level: ${volume}`);
+    });
+
+    // Function calls and transcripts will be sent via messages
+    vapiInstance.on('message', (message) => {
+        console.log(message);
+    });
+
+    vapiInstance.on('error', (e) => {
+        console.error(e)
+    });
+  </script>
 
 
 </body>
