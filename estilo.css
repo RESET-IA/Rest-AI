@@ -434,7 +434,7 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         .chat-button {
             position: fixed;
             bottom: 30px;
-            right: 40px;
+            left:320px;
             width: 110px; /* Ajusta el tamaño del botón */
             height: 100px;
             background-color: rgb(214, 84, 0);
@@ -459,7 +459,7 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         .chat-container {
             position: fixed;
             bottom: 100px;
-            right: 150px;
+            left:320px;
             width: 400px;
             height: 500px;
             background: white;
