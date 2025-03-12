@@ -292,6 +292,41 @@
                 <option value="option3">Audiencia Pymes</option>
             </select>
         </div>
+        <script>
+            function openHelpWindow() {
+                var width = 500;
+                var height = 600;
+                var screenWidth = window.screen.width;
+                var screenHeight = window.screen.height;
+                var left = (screenWidth - width) / 2;
+                var top = (screenHeight - height) / 2;
+            
+                window.open(
+                    'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
+                    'HelpWindow', 
+                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+                );
+            }
+            
+            function openFAQWindow() {
+                alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
+            }
+            
+            function openChatSupport() {
+                var width = 500;
+                var height = 600;
+                var screenWidth = window.screen.width;
+                var screenHeight = window.screen.height;
+                var left = (screenWidth - width) / 2;
+                var top = (screenHeight - height) / 2;
+            
+                window.open(
+                    'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
+                    'ChatSupportWindow', 
+                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+                );
+            }
+            </script>
         
         <script>
             function openAudienceLink() {
@@ -605,41 +640,6 @@ document.querySelectorAll(".menu li").forEach(item => {
     </div>
 </div>
 
-<script>
-function openHelpWindow() {
-    var width = 500;
-    var height = 600;
-    var screenWidth = window.screen.width;
-    var screenHeight = window.screen.height;
-    var left = (screenWidth - width) / 2;
-    var top = (screenHeight - height) / 2;
-
-    window.open(
-        'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
-        'HelpWindow', 
-        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-    );
-}
-
-function openFAQWindow() {
-    alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
-}
-
-function openChatSupport() {
-    var width = 500;
-    var height = 600;
-    var screenWidth = window.screen.width;
-    var screenHeight = window.screen.height;
-    var left = (screenWidth - width) / 2;
-    var top = (screenHeight - height) / 2;
-
-    window.open(
-        'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
-        'ChatSupportWindow', 
-        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-    );
-}
-</script>
 
 <div id="chat-container" class="chat-container">
     <iframe 
@@ -664,5 +664,7 @@ function openChatSupport() {
         }
     });
 </script>
+
+
 </body>
 </html>
