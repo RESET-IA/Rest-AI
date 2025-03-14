@@ -3,11 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    
 }
 
-html, body {
+ /* Configuración global para permitir desplazamiento de toda la pantalla */
+ html, body {
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-image: url('IMAGENES/FONDO.png');
     background-size: cover;
     background-position: center;
@@ -17,8 +19,7 @@ html, body {
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
-    scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
+    scrollbar-width: none;
 }
 
 /* Personalizar la barra de desplazamiento en navegadores Webkit */
@@ -35,35 +36,10 @@ html, body {
     border-radius: 5px;
 }
 
-/* --- Header Superior --- */
-.top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-    padding: 10px 20px;
-    color: white;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.top-header .right-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.top-header img {
-    height: 50px;
-}
-
 /* Menú lateral */
 .sidebar {
     width: 280px;
-    height: 125vh; 
+    height: 100vh; 
     background: rgba(139, 0, 0, 0.3);
     color: white;
     position: fixed;
@@ -79,22 +55,40 @@ html, body {
 }
 
 .logo-container {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    width: 220px;
+  }
+  
+  .sidebar.open {
+      left: -280px;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
 }
 
-.logo {
-  width: 220px;
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.sidebar.open {
-    left: -280px;
+.sidebar::-webkit-scrollbar-thumb {
+    background:transparent;
+    border-radius: 4px;
 }
 
-.menu-toggle {
-    position: absolute;
+.sidebar:hover::-webkit-scrollbar-thumb {
+    background:transparent;
+}
+
+
+  .menu-toggle {
+    position:fixed;
     top: 20px;
-    left: 20px;
+    left: 10px;
     background: #ff3c00;
     border: none;
     color: white;
@@ -130,98 +124,94 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Contenedor principal */
 .main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: rgb(247, 242, 242);
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
 }
 
 .section {
-  display: none;
-  width: 50%; /* Ajusta el tamaño del contenedor */
-  max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
-  text-align: center;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  position: absolute;
-  justify-content: center;
-  top: 60%;
-  left: 60%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
-  transform: translate(-50%, -50%);
+    display: none;
+    width: 80%; /* Ajusta el tamaño del contenedor */
+    max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+    text-align: center;
+    padding: 120px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: absolute;
+    color: white;
+    justify-content: center;
+    margin-top: 150px;
+    margin-left: 400px;
+}
+
+.section1 {
+    display: none;
+    width: 80%; /* Ajusta el tamaño del contenedor */
+    max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+    text-align: center;
+    padding: 120px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: absolute;
+    color: white;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 400px;
 }
 
 /* Ajuste de la imagen dentro de la sección */
-.section img {
-  width: 40%; /* Reduce el tamaño de la imagen */
-  max-width: 250px; /* Límite máximo de ancho */
-  display: block;
-  margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
-}
+.section img, .section1 img {
+    width: 40%; /* Reduce el tamaño de la imagen */
+    max-width: 250px; /* Límite máximo de ancho */
+    display: block;
+    margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
+  }
 
-/* Contenedor de botones centrado */
-.cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  margin-top: 20px;
-  flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+  .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin-top: 25px;
+    flex-wrap: nowrap; /* Evita que se vayan a otra línea */
 }
-
-.cards .card {
-  width: 180px; /* 🔥 Reduce el ancho del botón */
-  height: 140px; /* 🔥 Reduce la altura del botón */
-  font-size: 14px; /* 🔥 Reduce el tamaño del texto */
-}
-
-/* Ajusta el tamaño de los íconos dentro de los botones */
- .cards .card i {
-  font-size: 22px; /* 🔥 Reduce el tamaño del icono */
-  margin-bottom: 5px;
-}
-.cards .card {
-  background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-  box-shadow: none !important;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-h2 {color: white; /* Asegura que los títulos estén en blanco */}
 
 .card {
-  background: rgba(255, 255, 255, 0.1);
-  width: 220px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: 0.3s;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white; /* Asegura que el texto esté en blanco */
-}
-
-.card i {
-  font-size: 28px; /* Ajusta el tamaño del icono */
-  margin-right: 10px; /* Espacio entre icono y texto */
+    width: 220px;
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: url('IMAGENES/ButtonReset.png') no-repeat center center;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-  background: rgba(255, 60, 0, 0.8);
-  color: white;
-  transform: scale(1.05);
+    background: rgba(255, 60, 0, 0.8);
+    color: white;
+    transform: scale(1.05);
+}
+
+.main.hidden {
+    display: none;
 }
 
 @media (max-width: 1024px) { 
@@ -229,7 +219,7 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         position: absolute; /* Para que todo se mueva junto */
         left: -280px;
         transition: left 0.3s ease-in-out;
-        height: 125vh;
+        height: 120vh;
         padding-top: 50px;
     }
 
@@ -241,29 +231,40 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         display: block;
     }
 
-    .main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: rgb(247, 242, 242);
-    }
-
     .section {
         display: none;
-        width: 80%; /* Ajusta el tamaño del contenedor */
-        max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+        width: 80%;  /* Usa un ancho flexible */
+        max-width: 600px; /* Limita el ancho máximo */
         text-align: center;
         padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.7);
         border-radius: 10px;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        position: absolute;
-        top: 50%;
-        left: 50%; /* Antes estaba en 50%, esto lo mueve más a la derecha */
-        transform: translate(-50%, -50%);
-        }
+        color: white;
+        margin-left: 50px;
+        margin-top: 80px;
+    }
+
+    .section1 {
+        display: none;
+        width: 80%;  /* Usa un ancho flexible */
+        max-width: 600px; /* Limita el ancho máximo */
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        color: white;
+        margin-left: 50px;
+        margin-top: 70px;
+    }
+    .cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        margin-top: 25px;
+    }
 
     body {
         width: 100%;
@@ -312,16 +313,17 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         /* Contenedor del chatbot (oculto por defecto) */
         .chat-container {
             position: fixed;
-            bottom: 50px;
-            left: 20px;
-            width: 400px;
-            height: 500px;
+            bottom: 150px;
+            left: 50px;
+            width: 350px;
+            height: 400px;
             background: white;
             border-radius: 20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             display: none; /* Oculto por defecto */
             transition: all 0.3s ease-in-out;
+            z-index: 9999; /* Asegura que esté por encima de otros elementos */
         }
         
         /* Efecto al pasar el cursor */
@@ -369,73 +371,22 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
             }
         }
 
-}
-
-    /* En pantallas grandes (PC), el menú estará visible y fijo */
-    @media (min-width: 1025px) {
-        .sidebar {
-            width: 280px;
-            height: 125vh; 
-            background: rgba(139, 0, 0, 0.3);
-            color: white;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto; /* Permite desplazamiento interno en el menú */
-            padding-top: 5px;
+        .welcome-video {
+            max-width: 90%; /* Reduce el tamaño en móviles */
         }
-        .main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: rgb(247, 242, 242);
-        }
-
-        .section {
-            display: none;
-            width: 80%;  /* Usa un ancho flexible */
-            max-width: 600px; /* Limita el ancho máximo */
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            color: white;
-        }
-
-        body {
-            width: 100%;
-            height: 100%;
-            background-image: url('IMAGENES/FONDO.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            overflow-y: auto;
-            scrollbar-width: none;
-        }
-        
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        .menu-toggle {
-            display: none;
+    
+        .welcome-video video {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-height: 220px; /* Limita la altura */
+            margin-left: -90px;
         }
 
         /* Botón flotante con imagen */
-        .chat-button {
+        .chat-button1 {
             position: fixed;
-            bottom: 30px;
-            left:320px;
-            width: 110px; /* Ajusta el tamaño del botón */
+            bottom: 20px;
+            right: 20px;
+            width: 100px; /* Ajusta el tamaño del botón */
             height: 100px;
             background-color: rgb(214, 84, 0);
             border: none;
@@ -448,7 +399,7 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
             animation: float 2s ease-in-out infinite; /* Animación continua */
         }
 
-        .chat-button img {
+        .chat-button1 img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
@@ -456,22 +407,23 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
         }
 
         /* Contenedor del chatbot (oculto por defecto) */
-        .chat-container {
+        .chat-container1 {
             position: fixed;
-            bottom: 100px;
-            left:320px;
-            width: 400px;
-            height: 500px;
+            bottom: 140px;
+            right: 50px;
+            width: 350px;
+            height: 400px;
             background: white;
             border-radius: 20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             display: none; /* Oculto por defecto */
             transition: all 0.3s ease-in-out;
+            z-index: 9999; /* Asegura que esté por encima de otros elementos */
         }
         
         /* Efecto al pasar el cursor */
-        .chat-button:hover {
+        .chat-button1:hover {
             transform: translateY(-10px); /* Se mueve hacia arriba */
             box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
         }
@@ -491,49 +443,262 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
 
 
         /* Estilos específicos para el iframe */
-        .chat-container iframe {
+        .chat-container1 iframe {
             width: 100%;
             height: 100%;
             border-radius: 20px;
             border: none;
         }
+}
 
-        /* Animación de aparición del chatbot */
-        .show-chat {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-
+ /* En pantallas grandes (PC), el menú estará visible y fijo */
+ @media (min-width: 1025px) {
+    .sidebar {
+        width: 280px;
+        height: 100vh; 
+        background: rgba(139, 0, 0, 0.3);
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; /* Permite desplazamiento interno en el menú */
+        padding-top: 5px;
+        z-index: 1000;
+}
+    .main {
+        justify-content: center; /* Centra el contenido */
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        height: auto; /* Deja que crezca con el contenido */
+        margin-left: 100px;
     }
 
-.video-container {
-  margin-top: 20px; /* Espaciado entre los botones y el video */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    .section {
+        display: none;
+        width: 100%;  /* Usa un ancho flexible */
+        max-width: 600px; /* Limita el ancho máximo */
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        color: white;
+        
+    }
+    .section1 {
+        display: none;
+        width: 100%;  /* Usa un ancho flexible */
+        max-width: 600px; /* Limita el ancho máximo */
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        color: white;
+        
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        background-image: url('IMAGENES/FONDO.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: none;
+    }
+
+    .sidebar.open {
+        left: 0 !important; /* 🔹 Mantiene el menú visible en pantallas grandes */
+    }
+
+    /* Botón flotante con imagen */
+    .chat-button {
+        position: fixed;
+        bottom: 40px;
+        left: 295px;
+        width: 100px; /* Ajusta el tamaño del botón */
+        height: 100px;
+        background-color: rgb(214, 84, 0);
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0px 6px 15px rgb(214, 84, 0);
+        cursor: pointer;
+        overflow: hidden;
+        padding: 0;
+        transition: transform 0.9s ease, box-shadow 0.3s ease;
+        animation: float 2s ease-in-out infinite; /* Animación continua */
+    }
+
+    .chat-button img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Contenedor del chatbot (oculto por defecto) */
+    .chat-container {
+        position: fixed;
+        bottom: 100px;
+        left: 400px;
+        width: 400px;
+        height: 500px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        display: none; /* Oculto por defecto */
+        transition: all 0.3s ease-in-out;
+        z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    }
+    
+    /* Efecto al pasar el cursor */
+    .chat-button:hover {
+        transform: translateY(-10px); /* Se mueve hacia arriba */
+        box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
+    }
+
+    /* Animación de vaivén */
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    /* Estilos específicos para el iframe */
+    .chat-container iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: none;
+    }
+
+    /* Animación de aparición del chatbot */
+    .show-chat {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .welcome-video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 800px; /* Tamaño máximo en pantallas grandes */
+        margin: 0 auto; /* Centra el video */
+    }
+    
+    .welcome-video video {
+        width: 100%; /* Ajusta el ancho automáticamente */
+        height: auto; /* Mantiene la proporción */
+        border-radius: 10px; /* Bordes redondeados */
+    }    
+
+     /* Botón flotante con imagen */
+     .chat-button1 {
+        position: fixed;
+        bottom: 40px;
+        right: 20px;
+        width: 110px; /* Ajusta el tamaño del botón */
+        height: 110px;
+        background-color: rgb(214, 84, 0);
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0px 6px 15px rgb(214, 84, 0);
+        cursor: pointer;
+        overflow: hidden;
+        padding: 0;
+        transition: transform 0.9s ease, box-shadow 0.3s ease;
+        animation: float 2s ease-in-out infinite; /* Animación continua */
+    }
+
+    .chat-button1 img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Contenedor del chatbot (oculto por defecto) */
+    .chat-container1 {
+        position: fixed;
+        bottom: 100px;
+        right: 135px;
+        width: 400px;
+        height: 500px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        display: none; /* Oculto por defecto */
+        transition: all 0.3s ease-in-out;
+        z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    }
+    
+    /* Efecto al pasar el cursor */
+    .chat-button1:hover {
+        transform: translateY(-10px); /* Se mueve hacia arriba */
+        box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
+    }
+
+    /* Estilos específicos para el iframe */
+    .chat-container1 iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: none;
+    }
 }
-     
+.video-container {
+    margin-top: 20px; /* Espaciado entre los botones y el video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.video-container video {
-  width: 80%; /* Ajusta el ancho del video */
-  max-width: 600px; /* Tamaño máximo del video */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-}        
+  .video-container video {
+    width: 80%; /* Ajusta el ancho del video */
+    max-width: 600px; /* Tamaño máximo del video */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+  }        
 
-/* Estilos del carrusel */
+  /* Estilos del carrusel */
 .video-carousel {
     display: flex;
     align-items: center;
@@ -597,4 +762,3 @@ h2 {color: white; /* Asegura que los títulos estén en blanco */}
     max-height: 300px;
     border: none;
    }
-
