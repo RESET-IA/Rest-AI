@@ -113,7 +113,7 @@
 
     <!-- Contenido dinámico -->
     <div class="main">
-        <div id="neuromarketing" class="section">
+        <div id="neuromarketing" class="section1">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Neuromarketing</h2>
             <div class="cards">
@@ -142,7 +142,6 @@
                 <button class="next-btn" onclick="nextVideo()">&#10095;</button> <!-- Botón siguiente -->
             </div>
         </div>
-    </div>
     
     <script>
     let currentVideoIndex = 0;
@@ -257,7 +256,7 @@
         
         <script>
             function openAudienceLink() {
-                var url = "https://elevenlabs.io/app/talk-to?agent_id=qLet39dCFhoD4MljA1U6";
+                var url = "https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b";
                 var width = 500;
                 var height = 600;
                 var screenWidth = window.screen.width;
@@ -400,9 +399,6 @@
         </div>
     </div>
 </div>
-
-    <!-- Contenido dinámico -->
-    <div class="main">
         <div id="neuroband" class="section">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Neuroband</h2>
@@ -480,12 +476,12 @@
                 <div class="card"><i class="fas fa-search"></i><p>Predicción de Rendimiento</p></div>
             </div>
         </div>
-    </div>
 
     <script>
         function showSection(sectionId) {
     // Oculta todas las secciones antes de mostrar la deseada
     document.querySelectorAll('.section').forEach(section => section.style.display = "none");
+    document.querySelectorAll('.section1').forEach(section => section.style.display = "none");
 
     // Muestra la sección seleccionada
     document.getElementById(sectionId).style.display = "block";
@@ -566,9 +562,35 @@ document.querySelectorAll(".menu li").forEach(item => {
         </div>
     </div>
 </div>
-
+</div>
 
 <div id="chat-container" class="chat-container">
+    <iframe 
+        src="https://studio.d-id.com/agents/share?id=agt_AgWTXGyD&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" 
+        allow="microphone; camera; autoplay; encrypted-media"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<button id="chat-toggle" class="chat-button">
+    <img src="IMAGENES/LIA.SOMOS.+.jpeg" alt="Chatbot Avatar">
+</button>
+
+<script>
+    // Funcionalidad para mostrar/ocultar el chatbot
+    document.getElementById("chat-toggle").addEventListener("click", function () {
+        let chatContainer = document.getElementById("chat-container");
+        let chatContainer1 = document.getElementById("chat-container1");
+        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+            chatContainer.style.display = "block";
+            chatContainer1.style.display = "none";
+        } else {
+            chatContainer.style.display = "none";
+        }
+    });
+</script>
+
+<div id="chat-container1" class="chat-container1">
     <iframe 
         src="https://studio.d-id.com/agents/share?id=agt_7xUKmJPL&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" 
         allow="microphone; camera; autoplay; encrypted-media"
@@ -576,102 +598,23 @@ document.querySelectorAll(".menu li").forEach(item => {
     </iframe>
 </div>
 
-<button id="chat-toggle" class="chat-button">
+<button id="chat-toggle1" class="chat-button1">
     <img src="IMAGENES/Clarity_Pose4.png" alt="Chatbot Avatar">
 </button>
 
 <script>
     // Funcionalidad para mostrar/ocultar el chatbot
-    document.getElementById("chat-toggle").addEventListener("click", function () {
+    document.getElementById("chat-toggle1").addEventListener("click", function () {
         let chatContainer = document.getElementById("chat-container");
-        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-            chatContainer.style.display = "block";
-        } else {
+        let chatContainer1 = document.getElementById("chat-container1");
+        if (chatContainer1.style.display === "none" || chatContainer1.style.display === "") {
+            chatContainer1.style.display = "block";
             chatContainer.style.display = "none";
+        } else {
+            chatContainer1.style.display = "none";
         }
     });
 </script>
-
-<script>
-    var vapiInstance = null;
-    const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
-    const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-    const buttonIconURL = "Imagenes/Cerebroconlentes.ico"; // Ruta correcta de la imagen
-    const buttonConfig = {
-            position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
-            offset: "30px", // decide how far the button should be from the edge
-            width: "100px", // min-width of the button
-            height: "100px", // height of the button
-            idle: { // button state when the call is not active.
-                color: `rgb(214, 84, 0)`, // Negro
-                type: "round", // or "round"
-                title: "Servicio al Cliente", // only required in case of Pill
-                subtitle: "Habla con nuestro Asistente", // only required in case of pill
-                icon: buttonIconURL,
-            },
-            loading: { // button state when the call is connecting
-                color: `rgb(255, 102, 0)`, // Naranja
-                type: "round", // or "round"
-                title: "Conectando...", // only required in case of Pill
-                subtitle: "Espera un momento", // only required in case of pill
-                icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
-            },
-            active: { // button state when the call is in progress or active.
-                color: `rgb(255, 85, 0)`, // Naranja más oscuro
-                type: "round", // or "round"
-                title: "Llamada en progreso...", // only required in case of Pill
-                icon: buttonIconURL,
-            },
-    };
-  
-    (function (d, t) {
-      var g = document.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-      g.src =
-        "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g, s);
-  
-      g.onload = function () {
-        vapiInstance = window.vapiSDK.run({
-          apiKey: apiKey, // mandatory
-          assistant: assistant, // mandatory
-          config: buttonConfig, // optional
-        });
-      };
-    })(document, "script");
-
-    vapiInstance.on('speech-start', () => {
-        console.log('Speech has started');
-    });
-
-    vapiInstance.on('speech-end', () => {
-        console.log('Speech has ended');
-    });
-
-    vapiInstance.on('call-start', () => {
-        console.log('Call has started');
-    });
-
-    vapiInstance.on('call-end', () => {
-        console.log('Call has stopped');
-    });
-
-    vapiInstance.on('volume-level', (volume) => {
-        console.log(`Assistant volume level: ${volume}`);
-    });
-
-    // Function calls and transcripts will be sent via messages
-    vapiInstance.on('message', (message) => {
-        console.log(message);
-    });
-
-    vapiInstance.on('error', (e) => {
-        console.error(e)
-    });
-  </script>
-
 
 </body>
 </html>
