@@ -7,162 +7,233 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="estilo.css">
+    <!-- Fuentes de Google y librerías JS -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lobster&family=Poppins&family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <style>
-        /* Estilos para el video de bienvenida */
-        .welcome-video {
-            position: fixed;
-            top: 50%;
-            left: 60%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 200px;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            z-index: 1000;
-        }
-        .welcome-video video {
-            width: 250%;
-            height: auto;
-            border-radius: 10px;
-        }
-    </style>
+  <!-- Header -->
+  <header class="top-header">    
+      <div>
+      </div> <!-- Espacio vacío para centrar -->
+      <div class="right-header">
+        <img src="IMAGENES/LOGO-SOMOS-MAS.png">
+      </div>
+  </header>
     <!-- Video de bienvenida -->
     <div id="welcome-video-container" class="welcome-video">
-        <video id="welcome-video" autoplay muted>
-            <source src="IMAGENES/BIENVENIDA.mp4" type="video/mp4">
-        </video>
+      <video id="welcome-video" autoplay muted>
+        <source src="IMAGENES/BIENVENIDA.mp4" type="video/mp4">
+      </video>
     </div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Obtener todas las opciones del menú
-            let menuItems = document.querySelectorAll(".menu li");
-    
-            // Agregar evento a cada opción del menú para ocultar el video cuando se haga clic
-            menuItems.forEach(item => {
-                item.addEventListener("click", function() {
-                    let videoContainer = document.getElementById("welcome-video-container");
-                    if (videoContainer) {
-                        videoContainer.style.display = "none"; // Oculta el video
-                    }
-                });
-            });
-        });
-    </script>
-    
+    <script src="SCRIPTS/bienvenida.js"></script>
 
-    <div class="top-header">
-        <div></div> <!-- Espacio vacío para centrar -->
-        <div class="right-header">
-        </div>
-    </div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="inicio.html">
-            <center><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></center>
-        </a>
-        <br>
-        <div class="logo-container">
-            <img src="IMAGENES/BotonActivaAutomatizacion.png" alt="Logo Artesanos" class="menu-logo">
-        </div>
-        <p style="text-align: center; font-weight: bold;">Artesanos</p>
-        <br>
+        <button id="collapse-menu"><i class="fas fa-chevron-left"></i></button>
+        <a href="inicio.html"><center><img src="IMAGENES/LogoReset.png" alt="Logo" class="logo"></center></a><br>
+        <a href="inicio.html"><center><img src="IMAGENES/IsoReset-Rojo.png" alt="Logo" style="width: 50px; height: auto;"></center></a><br>
+        <div style="color: white; font-size: 15px; background-color: #b12121; padding: 10px 15px; border-radius: 8px;"><i class="fas fa-robot"style="margin-right: 11px;"></i><span class="menu-text">Artesanos | RESET®</span></div><br>
         <div class="menu">
             <ul>
-                <li onclick="showSection('neuromarketing')"><i class="fas fa-brain"></i> Neuromarketing</li>
-                <li onclick="showSection('ventas-comercial')"><i class="fas fa-chart-line"></i> Ventas & Comercial</li>
-                <li onclick="showSection('servicio-cliente')"><i class="fas fa-headset"></i> Servicio al Cliente</li>
-                <li onclick="showSection('talento-humano')"><i class="fas fa-users"></i> Talento Humano</li>
-                <li onclick="showSection('formacion')"><i class="fas fa-graduation-cap"></i> Formación</li>
+                <li onclick="showLogin('neuromarketing')"><i class="fas fa-brain"></i><span class="menu-text">Neuromarketing</span></li>
+                <li onclick="showSection('ventas-comercial')"><i class="fas fa-chart-line"></i> <span class="menu-text">Ventas & Comercial</span></li>
+                <li onclick="showSection('servicio-cliente')"><i class="fas fa-headset"></i><span class="menu-text">Servicio al Cliente</span></li>
+                <li onclick="showLogin('talento-humano')"><i class="fas fa-users"></i><span class="menu-text">Talento Humano</span></li>
+                <li onclick="showSection('formacion')"><i class="fas fa-graduation-cap"></i> <span class="menu-text">Formación</span></li>
+                <li onclick="showSection('customerExperience')"><i class="fas fa-smile"></i> <span class="menu-text">Customer Experience</span></li>
                 <br>
             </ul>                
         </div>
-        <div class="logo-container">
-            <img src="IMAGENES/BotonCerebro.png" alt="Logo Corpus de Entrenamiento" class="menu-logo">
-        </div>
-        <p style="text-align: center; font-weight: bold;">Corpus de Entrenamiento</p>
-        <br>
+        <div style="color: white; font-size: 15px; background-color: #b12121; padding: 10px; border-radius: 8px;"><i class="fas fa-brain" style="margin-right: 10px;"></i><span class="menu-text">Corpus de Entrenamiento®</span></div><br>
         <div class="menu">
             <ul>
-                <li onclick="showSection('neuroband')"><i class="fas fa-lightbulb"></i> NeuroBrand</li>
-                <li onclick="showSection('cultura-adn')"><i class="fas fa-users"></i> Cultura ADN Company</li>
-                <li onclick="showSection('business-challenge')"><i class="fas fa-briefcase"></i> Business Challenge</li>
-                <li onclick="showSection('people-analytics')"><i class="fas fa-chart-bar"></i> People Analytics</li>
-                <li onclick="showSection('ayuda')"><i class="fas fa-question-circle"></i> Ayuda</li>
+                <li onclick="showSection('innovationTank')"><i class="fas fa-flask"></i><span class="menu-text">Innovation Tank</span></li>
+                <li onclick="showSection('cultura-adn')"><i class="fas fa-users"></i> <span class="menu-text">Cultura ADN Company</span></li>
+                <li onclick="showSection('business-challenge')"><i class="fas fa-briefcase"></i><span class="menu-text">Business Challenge</span></li>
+                <li onclick="showSection('people-analytics')"><i class="fas fa-chart-bar"></i><span class="menu-text">People Analytics</span></li>
+                <li onclick="showSection('ayuda')"><i class="fas fa-question-circle"></i>  <span class="menu-text">Ayuda</span></li>
             </ul>          
         </div>
     </div>
-  
-    <!-- 2 Logos del Menú -->
-    <style>
-        .logo-container {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .menu-logo {
-            width: 250px;
-            height: auto;
-        }
-    </style>
+    <script src="SCRIPTS/ColapsarMenu.js"></script>
 
-    <!-- Contenido dinámico -->
-    <div class="main">
-        <div id="neuromarketing" class="section1">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Neuromarketing</h2>
-            <div class="cards">
-                <div class="card"><i class="fas fa-bullhorn"></i><p>Estrategia Publicitaria</p></div>
-                <div class="card"><i class="fas fa-magnet"></i><p>Psicología del Consumidor</p></div>
-                <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Datos</p></div>
-            </div>
-    
-            <!-- Carrusel de videos -->
-            <div class="video-carousel">
-                <button class="prev-btn" onclick="prevVideo()">&#10094;</button> <!-- Botón atrás -->
-                <div class="video-container">
-                    <video id="video1" controls>
-                        <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
-                    </video>
-                    <video id="video2" controls>
-                        <source src="IMAGENES/LeonellaCatalystTransformacion (1).mp4" type="video/mp4">
-                    </video>
-                    <video id="video3" controls>
-                        <source src="IMAGENES/PabloCatalystEstrategia (1).mp4" type="video/mp4">
-                    </video>
-                    <video id="video3" controls>
-                        <source src="IMAGENES/MariaCatalystEstrategia (1).mp4" type="video/mp4">
-                    </video>
-                </div>
-                <button class="next-btn" onclick="nextVideo()">&#10095;</button> <!-- Botón siguiente -->
-            </div>
+    <!-- Ventana emergente de login -->
+    <div id="loginPopup" class="login-popup">
+        <div class="login-content">
+          <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+          <h2 style="color: white;">Acceso restringido</h2>
+          <input type="password" id="passwordInput" placeholder="Ingresa la contraseña">
+          <div class="login-buttons">
+            <button onclick="validatePassword()">Ingresar</button>
+            <button onclick="closeLogin()">Cancelar</button>
+          </div>
         </div>
+    </div>
+    <script src="SCRIPTS/loginnyt.js"></script>
     
-    <script>
-    let currentVideoIndex = 0;
-    const videos = document.querySelectorAll('.video-container video');
-    
-    function showVideo(index) {
-        videos.forEach((video, i) => {
-            video.style.display = i === index ? 'block' : 'none';
-        });
-    }
-    
-    function nextVideo() {
-        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-        showVideo(currentVideoIndex);
-    }
-    
-    function prevVideo() {
-        currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-        showVideo(currentVideoIndex);
-    }
-    </script>
+    <div class="main">
+      <div id="neuromarketing" class="section1">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset"><h2>Neuromarketing</h2>
+        <div class="cards">
+          <div class="card" onclick="toggleChatSection()"><i class="fas fa-bullhorn"></i><br><p>Estrategia de Marketing</p></div>
+          <div class="card" onclick="toggleAdStrategy()"><i class="fas fa-magnet"></i><br><p>Estrategia Publicitaria</p></div>
+          <div class="card" onclick="openDocumentSection()"><i class="fas fa-file-alt"></i><br><p>Analizar Documentos</p></div>
+        </div>
+
+        <!-- Video de indicacion -->
+        <div class="video-carousel" id="videoCarousel">
+          <div class="video-container"><video id="video1" controls autoplay muted><source src="IMAGENES/ClonPame.mp4" type="video/mp4"></video></div>         
+          <button onclick="window.open('https://drive.google.com/drive/folders/1_n3_dMhNc1s845crajlc_YC_U3NC0SQq?usp=drive_link', '_blank')"><i class="fas fa-external-link-alt"></i>ACTIVOS DE LA MARCA</button>
+        </div>
+
+      <!-- 🔍 SECCIÓN DE LECTOR DE DOCUMENTOS (oculta por defecto) -->
+        <div id="documentSection" style="display: none; text-align: center; margin-top: 30px;">
+          <h2>Sube tu documento y pregúnta a LIA®</h2>
+          <input type="file" id="fileInput" accept=".txt,.pdf" class="styled-file-input"><br>
+          <textarea id="userQuestion" placeholder="Hazle una pregunta al contenido..." class="styled-textarea"></textarea><br>
+          <button onclick="askAI()" class="styled-button">Preguntar a LIA®</button><br><br>
+          <textarea id="documentResponse" readonly placeholder="La respuesta aparecerá aquí..." class="styled-textarea"></textarea><br><br>
+          <button onclick="resetConsulta()" class="styled-button">Nueva consulta</button>
+          <button onclick="cerrarDocumento()" class="styled-button">Cerrar</button>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+        <script src="SCRIPTS/CargadeArchivoconIA.js"></script>
+  
+        <!-- ChatGPT Input/Output -->
+        <div id="chatSection" style="display: none; text-align: center; margin-top: 20px;">
+            <h2>Pregunta a LIA®</h2>
+            <textarea id="userInput" placeholder="Escribe tu pregunta aquí..." class="styled-textarea"></textarea><br>
+            <button id="askBtn" onclick="askChatGPT()" class="styled-button">Enviar</button><br><br>
+        
+        <!-- Barra de carga estilo pixel-art -->
+            <div id="loadingContainer" style="display: none;">
+                <p style="font-family: monospace; font-size: 18px;">PENSANDO... <span id="loadingPercentage">0%</span></p>
+                <div id="loadingBarContainer" class="pixel-bar"><div id="loadingBar" class="pixel-bar-fill"></div></div>
+            </div>
+            <br><textarea id="responseOutput" placeholder="Tu respuesta aparecerá aquí..." class="styled-textarea" readonly></textarea><br>
+            <button onclick="closeChat()" class="styled-button">Cerrar</button>
+        </div>
+        <script src="SCRIPTS/IAenlaWeb.js"></script>
+
+      <!-- Sección de generación de imágenes (oculta por defecto) -->
+      <div id="adStrategySection" style="display: none; text-align: center; margin-top: 30px;">
+        <h2>Genera tu imagen con Lia®</h2><br>
+        <div class="input-group">
+          <textarea id="prompt" placeholder="Describe la imagen" class="styled-inputg" rows="5"></textarea>
+          <div class="button-group">
+            <button onclick="generateImage()" class="styled-button">Generar</button>
+            <button onclick="closeAdStrategy()" class="styled-button">Cerrar</button>
+            <button onclick="toggleEditor()" class="styled-button">🎨 Abrir Editor Visual</button>
+          </div>
+        <div id="imageContainer" class="image-container" style="display:none; min-height: 100px; align-items: center; justify-content: center;"></div>
+      </div>
+      <!-- Editor Visual RESET®-PRO NEUROMARKETING(oculto por defecto) -->
+      <div id="editorContainer" class="centered-section" style="display: none;">
+        <div id="formatHeader">        
+    <h2>EDITOR VISUAL RESET®-PRO</h2>
+    <p id="canvasSize">Formato: Mail (800x600)</p><br>
+    <select id="formatSelect" onchange="handleFormatChange()">
+      <option value="800x600">Mail (800x600)</option>
+      <option value="600x600">WhatsApp (600x600)</option>
+      <option value="1080x1920">Storys (1080x1920)</option>
+      <option value="1080x1080">Post Redes (1080x1080)</option>
+    </select>
+  </div>
+
+  <div id="controls">
+    <div class="input-row">
+      <label>Fondo:</label>
+      <input type="file" id="uploadBackground">
+      <label>Imagen:</label>
+      <input type="file" id="uploadImage">
+    </div>
+    <div class="input-row">
+      <input type="text" id="customText" placeholder="Texto...">
+      <input type="color" id="textColor" value="#ffffff">
+      <select id="fontFamily">
+        <option value="'Anton', sans-serif">Anton</option>
+        <option value="'Poppins', sans-serif">Poppins</option>
+        <option value="'Playfair Display', serif">Playfair</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Lobster', cursive">Lobster</option>
+      </select>
+      <select id="fontSize">
+        <option value="12">12px</option>
+        <option value="16" selected>16px</option>
+        <option value="24">24px</option>
+        <option value="36">36px</option>
+        <option value="62">62px</option>
+        <option value="80">80px</option>
+      </select>
+      <button onclick="addText()">+ Añadir Texto</button>
+    <button onclick="downloadImage()">⬇️ Descargar Diseño</button>
+    <button onclick="clearEditor()">🆕 Nuevo Diseño</button>
+  </div>
+  <div class="input-row">
+    <button onclick="setTextAlign('left')">⬅️ Izquierda</button>
+    <button onclick="setTextAlign('center')">⬅️➡️ Centro</button>
+    <button onclick="setTextAlign('right')">➡️ Derecha</button>
+    <button onclick="toggleBold()">🅱️ Negrita</button>
+    <button onclick="toggleItalic()">𝘐 Cursiva</button>
+    <button onclick="toggleUnderline()">U̲ Subrayado</button>
+    <button onclick="openAIHelper()">🤖 Asistente Creativo</button>
+  </div>
+  
+  <div class="input-row">
+    <select onchange="addEmoji(this.value)">
+      <option value="">🙂 Emojis</option>
+      <option value="🔥">🔥</option>
+      <option value="🚀">🚀</option>
+      <option value="💡">💡</option>
+      <option value="💥">💥</option>
+      <option value="🧠">🧠</option>
+    </select>
+    <select onchange="applyFilter(this.value)">
+      <option value="">🎨 Filtro</option>
+      <option value="grayscale(100%)">Gris</option>
+      <option value="sepia(70%)">Sepia</option>
+      <option value="blur(3px)">Desenfoque</option>
+      <option value="brightness(1.2)">Brillo+</option>
+      <option value="contrast(150%)">Contraste+</option>
+    </select>
+    <select id="templateSelect" onchange="loadTemplate(this.value)">
+      <option value="">🎨 Plantillas</option>
+      <option value="fraseMotivacional">Frase Motivacional</option>
+      <option value="ofertaPromo">Oferta Promo</option>
+      <option value="bienvenida">Mensaje Bienvenida</option>
+    </select>
+    </div>
+  </div>
+  <div id="editor"></div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lobster&family=Poppins&family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="SCRIPTS/editorpro.js"></script>
+<script src="SCRIPTS/ImagenIA.js"></script>
+    </div>
+</div>
+
+<div id="servicio-cliente" class="section">
+    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+    <h2>Servicio al Cliente</h2>
+    <div class="cards">
+        <div class="card"><i class="fas fa-folder-open"></i><br><p>Atiende & Mejora Cobranza</p></div>
+        <div class="card"><i class="fas fa-user-tie"></i><br><p>Mejora la Experiencia al Cliente</p>
+            <select id="customerServiceOptions" onchange="openAudienceLink()">
+                <option value="" selected disabled>Selecciona una audiencia</option>
+                <option value="option1">Audiencia M/H 25-35</option>
+                <option value="option2">Audiencia Empresas</option>
+                <option value="option3">Audiencia Pymes</option>
+            </select>
+        </div>     
+        <div class="card" onclick="openAudienceWindow()" style="cursor:pointer;"><i class="fas fa-calendar-alt"></i><br><p>Identifica Audiencias</p></div>
+    </div>
+</div>
         <div id="ventas-comercial" class="section">
             <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>Ventas & Comercial</h2>
@@ -183,438 +254,386 @@
                 ></iframe>
             </div>
         </div>
-        
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("gestionEquiposBtn").addEventListener("click", function() {
-                    let chatbotContainer = document.getElementById("chatbot-container");
-                    chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
-                });
-            });
-        </script>
+        <script src="SCRIPTS/chatbot.js"></script>
 
-<div id="servicio-cliente" class="section">
-    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-    <h2>Servicio al Cliente</h2>
-    <div class="cards">
-        <div class="card">
-            <i class="fas fa-folder-open"></i>
-            <p>Atiende & Mejora Cobranza</p>
-            <form id="uploadForm">
-                <input type="file" name="file" id="fileInput" accept=".xlsx, .csv" style="display: none;" required>
-                <button type="button" id="uploadButton">Seleccionar Archivo</button>
-                <button type="button" id="sendCallsButton" disabled style="opacity: 0.5; cursor: not-allowed;">📞 Iniciar Llamadas</button>
-                <p id="statusMessage"></p>
-            </form>
+    <div id="talento-humano" class="section1">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>Talento Humano</h2>
+      
+        <div class="cards">
+          <div class="card" onclick="toggleTalentoChatSection()"><i class="fas fa-chalkboard-teacher"></i><p>Formación Continua</p></div>
+          <div class="card" onclick="toggleAdTalento()"><i class="fas fa-comments"></i><p>Comunicación Efectiva</p></div>
+          <div class="card" onclick="abrirTalentoHumanoLIA()">
+            <i class="fas fa-briefcase"></i><p>Sube tu documento y analízalo</p>
+          </div>
+                  </div>
+
+        <!-- 📄 SECCIÓN DE LECTOR DE DOCUMENTOS PARA TALENTO HUMANO -->
+        <div id="documentSectionTH" style="display: none; text-align: center; margin-top: 30px;">
+             <h2>Sube tu documento y consúltale a LIA®</h2>
+             <input type="file" id="fileInputTH" accept=".txt,.pdf" class="styled-file-input"><br>
+             <textarea id="userQuestionTH" placeholder="Ej: Hazle una pregunta al contenido" class="styled-textarea"></textarea><br>
+             <button onclick="askAITH()" class="styled-button">Consultar a LIA®</button><br><br>
+             <textarea id="documentResponseTH" readonly placeholder="Aquí verás la respuesta de LIA®..." class="styled-textarea"></textarea><br><br>
+             <button onclick="resetConsultaTH()" class="styled-button">Nueva consulta</button>
+             <button onclick="cerrarDocumentoTH()" class="styled-button">Cerrar</button>
         </div>
 
-        <div class="card">
-            <i class="fas fa-user-tie"></i>
-            <p>Mejora la Experiencia al Cliente</p>
-            <select id="customerServiceOptions" onchange="openAudienceLink()">
-                <option value="" selected disabled>Selecciona una audiencia</option>
-                <option value="option1">Audiencia M/H 25-35</option>
-                <option value="option2">Audiencia Empresas</option>
-                <option value="option3">Audiencia Pymes</option>
+        <!-- VIDEO DEBAJO DE LOS BOTONES -->
+        <div id="videoTalento" style="text-align: center; margin-top: 30px;">
+          <video id="videoTalento" width="80%" controls poster="IMAGENES/BIENVENIDA.mp4" autoplay muted loop>
+            <source src="IMAGENES/ClonPame.mp4" type="video/mp4"></video>
+          </video>
+          <button onclick="abrirEnlace()" style="background-color: #e0211a; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;"><i class="fas fa-external-link-alt"></i> ACTIVOS DE LA MARCA</button>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+        <script src="SCRIPTS/CargarArchivosconIA2.js"></script>
+
+        <!-- Sección de generación de imágenes y editor para Comunicación Efectiva -->
+        <div id="adTalentoSection" style="display: none; margin-top: 30px;">
+            <h2>Explora la Comunicación Efectiva con Lia®</h2>
+            <br>
+            <div class="input-group">
+              <textarea id="promptTalento" placeholder="Describe la imagen" class="styled-inputg" rows="5"></textarea>
+              <div class="button-group">
+                <button onclick="generateImageTalento()" class="styled-button">Generar</button>
+                <button onclick="closeAdTalento()" class="styled-button">Cerrar</button>
+                <button onclick="toggleEditorTH()" class="styled-button">🎨 Abrir Editor Visual</button>
+              </div>
+            <div id="imageContainerTalento" class="image-container" style="display:none; min-height: 100px; align-items: center; justify-content: center;"></div>
+            </div>
+            <br>
+            <script src="SCRIPTS/CargadeArchivoconIA.js"></script>
+            <script src="SCRIPTS/ImagenTalentoIA.js"></script>
+        </div>
+
+        <!-- 🎨 Editor Visual exclusivo para Talento Humano -->
+        <div id="editorContainerTH" class="centered-section" style="display: none;">
+          <div id="formatHeaderTH">
+            <h2>EDITOR VISUAL RESET®-PRO | TALENTO HUMANO</h2>
+            <p id="canvasSizeTH">Formato: Comunicación Interna (800x600)</p><br>
+            <select id="formatSelectTH" onchange="handleFormatChangeTH()">
+              <option value="800x600">Mail Interno (800x600)</option>
+              <option value="600x600">Anuncio Breve (600x600)</option>
+              <option value="1080x1920">Mensaje Vertical (1080x1920)</option>
+              <option value="1080x1080">Cuadrado (1080x1080)</option>
             </select>
+          </div>
+        
+          <div id="controlsTH">
+            <div class="input-row">
+              <label>Fondo:</label>
+              <input type="file" id="uploadBackgroundTH">
+              <label>Imagen:</label>
+              <input type="file" id="uploadImageTH">
+            </div>
+        
+            <div class="input-row">
+              <input type="text" id="customTextTH" placeholder="Texto...">
+              <input type="color" id="textColorTH" value="#ffffff">
+              <select id="fontFamilyTH">
+                <option value="'Anton', sans-serif">Anton</option>
+                <option value="'Poppins', sans-serif">Poppins</option>
+                <option value="'Playfair Display', serif">Playfair</option>
+                <option value="'Roboto', sans-serif">Roboto</option>
+                <option value="'Lobster', cursive">Lobster</option>
+              </select>
+              <select id="fontSizeTH">
+                <option value="12">12px</option>
+                <option value="16" selected>16px</option>
+                <option value="24">24px</option>
+                <option value="36">36px</option>
+                <option value="62">62px</option>
+                <option value="80">80px</option>
+              </select>
+              <button onclick="addTextTH()">+ Añadir Texto</button>
+              <button onclick="downloadImageTH()">⬇️ Descargar Diseño</button>
+              <button onclick="clearEditorTH()">🆕 Nuevo Diseño</button>
+            </div>
+        
+            <div class="input-row">
+              <select onchange="addEmojiTH(this.value)">
+                <option value="">🙂 Emojis</option>
+                <option value="🎯">🎯</option>
+                <option value="🤝">🤝</option>
+                <option value="💬">💬</option>
+                <option value="🏆">🏆</option>
+                <option value="👏">👏</option>
+              </select>
+              <select onchange="applyFilterTH(this.value)">
+                <option value="">🎨 Filtro</option>
+                <option value="grayscale(100%)">Gris</option>
+                <option value="sepia(70%)">Sepia</option>
+                <option value="blur(3px)">Desenfoque</option>
+                <option value="brightness(1.2)">Brillo+</option>
+                <option value="contrast(150%)">Contraste+</option>
+              </select>
+              <button onclick="openAIHelperTH()">🤖 Asistente Creativo</button>
+              <select id="templateSelectTH" onchange="loadTemplateTH(this.value)">
+                <option value="">📄 Plantillas Internas</option>
+                <option value="mensajeReconocimiento">Reconocimiento</option>
+                <option value="cumpleanios">Cumpleaños</option>
+                <option value="bienvenidaEquipo">Bienvenida</option>
+              </select>
+            </div>
+          </div>
+        
+          <div id="editorTH"></div>
+          <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lobster&family=Poppins&family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="SCRIPTS/editorproTH.js"></script>
+<script src="SCRIPTS/ImagenTalentoIA.js"></script>
         </div>
-        <script>
-            function openHelpWindow() {
-                var width = 500;
-                var height = 600;
-                var screenWidth = window.screen.width;
-                var screenHeight = window.screen.height;
-                var left = (screenWidth - width) / 2;
-                var top = (screenHeight - height) / 2;
-            
-                window.open(
-                    'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
-                    'HelpWindow', 
-                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-                );
-            }
-            
-            function openFAQWindow() {
-                alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
-            }
-            
-            function openChatSupport() {
-                var width = 500;
-                var height = 600;
-                var screenWidth = window.screen.width;
-                var screenHeight = window.screen.height;
-                var left = (screenWidth - width) / 2;
-                var top = (screenHeight - height) / 2;
-            
-                window.open(
-                    'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b', 
-                    'ChatSupportWindow', 
-                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-                );
-            }
-            </script>
         
-        <script>
-            function openAudienceLink() {
-                var url = "https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b";
-                var width = 500;
-                var height = 600;
-                var screenWidth = window.screen.width;
-                var screenHeight = window.screen.height;
-                var left = (screenWidth - width) / 2;
-                var top = (screenHeight - height) / 2;
-        
-                window.open(
-                    url, 
-                    'AudienceWindow', 
-                    `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-                );
-        
-                // Opcional: Reinicia el select para que pueda volverse a seleccionar
-                document.getElementById("customerServiceOptions").selectedIndex = 0;
-            }
-        </script>
-        
-       
-        <div class="card" onclick="openAudienceWindow()" style="cursor:pointer;">
-            <i class="fas fa-calendar-alt"></i>
-            <p>Identifica Audiencias</p>
+
+        <!-- CONTENEDOR DE PREGUNTA A LIA® -->
+        <div id="chatSectionTalento" style="display: none; text-align: center; margin-top: 30px;">
+          <h3 style="color: white;">Pregunta a LIA®</h3>
+          <textarea id="userPromptTalento" placeholder="Escribe tu pregunta aquí..." style="width: 80%; height: 100px; border: 4px solid red; border-radius: 10px; margin-bottom: 10px; font-size: 16px; padding: 10px;"></textarea>
+          <br>
+          <button onclick="enviarPreguntaTalento()" style="background-color: red; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer;">Enviar</button>
+          <br><br>
+          <textarea id="respuestaLiaTalento" placeholder="Respuesta aparecerá aquí..." style="width: 80%; height: 100px; border: 4px solid red; border-radius: 10px; font-size: 16px; padding: 10px;"></textarea>
+          <br>
+          <button onclick="closeTalentoChatSection()" style="background-color: red; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">Cerrar</button>
         </div>
-    </div>
-</div>
+        <script src="SCRIPTS/Formacion.js"></script>
+        <script src="SCRIPTS/editorproTH.js"></script>
+  </div>
 
-<script>
-    const uploadWebhookURL = "https://hook.us2.make.com/i5mj74fnajhk9wyw900exwmakjq1wbm2"; // Webhook de Make para subir archivo
-    const callWebhookURL = "https://hook.us2.make.com/i5mj74fnajhk9wyw900exwmakjq1wbm2"; // Webhook de Make para llamadas
-    let uploadedFileURL = ""; // Guardará la URL del archivo subido
-
-    // Evento para seleccionar archivo
-    document.getElementById("uploadButton").addEventListener("click", function() {
-        document.getElementById("fileInput").click();
-    });
-
-    // Evento al subir archivo
-    document.getElementById("fileInput").addEventListener("change", async function() {
-        const file = this.files[0];
-        if (!file) {
-            alert("⚠️ Selecciona un archivo para subir.");
-            return;
-        }
-
-        document.getElementById("statusMessage").textContent = "🔄 Subiendo archivo...";
-        const formData = new FormData();
-        formData.append("file", file);
-
-        try {
-            const response = await fetch(uploadWebhookURL, {
-                method: "POST",
-                body: formData
-            });
-
-            const result = await response.json();
-            if (response.ok && result.fileUrl) {
-                uploadedFileURL = result.fileUrl;
-                document.getElementById("statusMessage").innerHTML = `✅ Archivo subido: <a href="${uploadedFileURL}" target="_blank">Ver archivo</a>`;
-                document.getElementById("sendCallsButton").disabled = false; // Habilita el botón
-                document.getElementById("sendCallsButton").style.opacity = "1";
-                document.getElementById("sendCallsButton").style.cursor = "pointer";
-            } else {
-                document.getElementById("statusMessage").textContent = "❌ Error al subir el archivo.";
-            }
-        } catch (error) {
-            document.getElementById("statusMessage").textContent = "⚠️ Error en la conexión: " + error.message;
-        }
-    });
-
-    // Evento para iniciar llamadas
-    document.getElementById("sendCallsButton").addEventListener("click", async function() {
-        if (!uploadedFileURL) {
-            alert("⚠️ Sube un archivo antes de iniciar las llamadas.");
-            return;
-        }
-
-        document.getElementById("statusMessage").textContent = "📞 Iniciando llamadas...";
-
-        try {
-            const callResponse = await fetch(callWebhookURL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ fileUrl: uploadedFileURL })
-            });
-
-            if (callResponse.ok) {
-                document.getElementById("statusMessage").textContent = "✅ Llamadas en proceso...";
-            } else {
-                document.getElementById("statusMessage").textContent = "❌ Error al iniciar llamadas.";
-            }
-        } catch (error) {
-            document.getElementById("statusMessage").textContent = "⚠️ Error en la conexión: " + error.message;
-        }
-    });
-
-    // Abrir ventana de audiencia
-    function openAudienceWindow() {
-        var width = 500;
-        var height = 600;
-        var screenWidth = window.screen.width;
-        var screenHeight = window.screen.height;
-        var left = (screenWidth - width) / 2;
-        var top = (screenHeight - height) / 2;
-
-        window.open(
-            'https://elevenlabs.io/app/talk-to?agent_id=5LKvXjRF5GqeY9UWvU8b',
-            'AudienceWindow',
-            `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-        );
-    }
-</script>
-
-
-     <div id="talento-humano" class="section">
-         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-         <h2>Talento Humano</h2>
+     <div id="formacion" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+         <h2>Formación</h2>
              <div class="cards">
-                 <div class="card"><i class="fas fa-chalkboard-teacher"></i><p>Formación Continua</p></div>
-                 <div class="card"><i class="fas fa-comments"></i><p>Comunicación Efectiva</p></div>
-                 <div class="card"><i class="fas fa-briefcase"></i><p>Gestión del Desempeño</p></div>
+                 <div class="card"><i class="fas fa-graduation-cap"></i><br><p>Atiende & Mejora Cobranza</p></div>
+                 <div class="card"><i class="fas fa-chalkboard-teacher"></i><br><p>Mentoría y Coaching</p></div>
+                 <div class="card"><i class="fas fa-book-open"></i><br><p>Recursos Educativos</p></div>
              </div>
      </div>
 
-
-<div id="formacion" class="section">
-    <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-    <h2>Formación</h2>
-    <div class="cards">
-        <div class="card" style="position: relative;">
-            <i class="fas fa-graduation-cap"></i>
-            <p>Atiende & Mejora Cobranza</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <p>Mentoría y Coaching</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-book-open"></i>
-            <p>Recursos Educativos</p>
-        </div>
-    </div>
-</div>
-        <div id="neuroband" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Neuroband</h2>
+     <div id="neuroband" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+         <h2>Innovation Tank</h2>
             <div class="cards">
-                <div class="card" onclick="document.getElementById('fileInput').click()" style="cursor:pointer;">
-                    <i class="fas fa-lightbulb"></i>
-                    <p>Creatividad e Innovación</p>
-                    <input type="file" id="fileInput" accept=".xlsx, .csv" style="display: none;">
-                    <button type="button" id="uploadButton">📤 Subir Archivo</button>
-                    <p id="statusMessage"></p>
-                </div>
+                <div class="card"><i class="fas fa-lightbulb"></i><br><p>Creatividad e Innovación</p></div>
                 <div class="card"><i class="fas fa-bullhorn"></i><p>Posicionamiento de Marca</p></div>
                 <div class="card"><i class="fas fa-chart-line"></i><p>Estrategia Digital</p></div>
             </div>
-        </div>
-        
-        <script>
-            const webhookURL = "https://hook.us2.make.com/i5mj74fnajhk9wyw900exwmakjq1wbm2"; // Webhook de Make
-        
-            document.getElementById("uploadButton").addEventListener("click", function() {
-                const fileInput = document.getElementById("fileInput");
-                if (!fileInput.files.length) {
-                    alert("⚠️ Selecciona un archivo antes de subirlo.");
-                    return;
-                }
-        
-                document.getElementById("statusMessage").textContent = "🔄 Subiendo archivo...";
-                const formData = new FormData();
-                formData.append("file", fileInput.files[0]);
-        
-                fetch(webhookURL, {
-                    method: "POST",
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById("statusMessage").textContent = "✅ Archivo subido con éxito.";
-                    } else {
-                        document.getElementById("statusMessage").textContent = "❌ Error al subir el archivo.";
-                    }
-                })
-                .catch(error => {
-                    document.getElementById("statusMessage").textContent = "⚠️ Error en la conexión: " + error.message;
-                });
-            });
-        </script>
-        
+     </div>        
 
-        <div id="cultura-adn" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Cultura ADN Company</h2>
+     <div id="cultura-adn" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+         <h2>Cultura ADN Company</h2>
             <div class="cards">
                 <div class="card"><i class="fas fa-users"></i><p>Gestión del Cambio</p></div>
                 <div class="card"><i class="fas fa-handshake"></i><p>Valores Corporativos</p></div>
                 <div class="card"><i class="fas fa-users-cog"></i><p>Construcción de Equipos</p></div>
             </div>
+     </div>
+
+     <div id="business-challenge" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+        <h2>Business Challenge</h2>
+    
+        <!-- FECHA ACTUAL -->
+        <div id="fechaActual" style="color: white; font-size: 18px; margin: 10px 0; text-align: center;"></div>
+        <div id="horaActual" style="color: white; font-size: 16px; margin-bottom: 20px; text-align: center;"></div>
+    
+        <div class="cards">
+          <div class="card" id="btnVentas"><i class="fas fa-tasks"></i><p>Ventas</p></div>
+          <div class="card"><i class="fas fa-briefcase"></i><p>Diversificasión de Cartera</p></div>
+            <div class="card"><i class="fas fa-bullseye"></i><p>Optimización de Procesos</p></div>
         </div>
 
-        <div id="business-challenge" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>Business Challenge</h2>
-            <div class="cards">
-                <div class="card"><i class="fas fa-tasks"></i><p>Innovación Empresarial</p></div>
-                <div class="card"><i class="fas fa-briefcase"></i><p>Casos de Negocio</p></div>
-                <div class="card"><i class="fas fa-bullseye"></i><p>Optimización de Procesos</p></div>
+        <div style="text-align: center;">
+          <h2>🎯 Tablero de Metas Empresariales</h2>
+          <button onclick="location.reload()" class="add-meta-btn">🔄 Resetear Tablero</button>
+        </div>
+        
+        <div class="board-container">
+          <div class="area-column">
+            <h3>Ventas</h3>
+            <div id="area-Ventas">
+              <div class="meta-card" id="meta-ventas-1" draggable="true">
+                <div class="acciones">
+                  <i class="fas fa-pencil-alt" onclick="editarMeta('meta-ventas-1')"></i>
+                  <i class="fas fa-trash" onclick="eliminarMeta('meta-ventas-1')"></i>
+                </div>
+                <h4>Aumentar 20% clientes Q3</h4>
+                <p>📅 Fecha límite: 30/06/2025</p>
+                <p>🎯 KPI: +500 leads</p>
+                <p>👤 Responsable: Juan</p>
+              </div>
             </div>
-        </div>
+            <button class="add-meta-btn" onclick="agregarMeta('Ventas')">+ Agregar Meta</button>
+          </div>
+        
+          <div class="area-column">
+            <h3>Marketing</h3>
+            <div id="area-Marketing">
+              <div class="meta-card" id="meta-marketing-1" draggable="true">
+                <div class="acciones">
+                  <i class="fas fa-pencil-alt" onclick="editarMeta('meta-marketing-1')"></i>
+                  <i class="fas fa-trash" onclick="eliminarMeta('meta-marketing-1')"></i>
+                </div>
+                <h4>Lanzar nueva campaña redes sociales Q2</h4>
+                <p>📅 Fecha límite: 15/05/2025</p>
+                <p>🎯 KPI: +3k seguidores</p>
+                <p>👤 Responsable: Carla</p>
+              </div>
+            </div>
+            <button class="add-meta-btn" onclick="agregarMeta('Marketing')">+ Agregar Meta</button>
+          </div>
+        
+          <div class="area-column">
+            <h3>Talento Humano</h3>
+            <div id="area-Talento">
+              <div class="meta-card" id="meta-talento-1" draggable="true">
+                <div class="acciones">
+                  <i class="fas fa-pencil-alt" onclick="editarMeta('meta-talento-1')"></i>
+                  <i class="fas fa-trash" onclick="eliminarMeta('meta-talento-1')"></i>
+                </div>
+                <h4>Mejorar onboarding de nuevos empleados</h4>
+                <p>📅 Fecha límite: 10/04/2025</p>
+                <p>🎯 KPI: 90% satisfacción</p>
+                <p>👤 Responsable: Ana</p>
+              </div>
+            </div>
+            <button class="add-meta-btn" onclick="agregarMeta('Talento')">+ Agregar Meta</button>
+          </div>
+        </div>        
 
-        <div id="people-analytics" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>People Analytics</h2>
+        <script>
+          function agregarMeta(area) {
+            const titulo = prompt("Título de la meta:");
+            const fecha = prompt("Fecha límite:");
+            const kpi = prompt("KPI:");
+            const responsable = prompt("Responsable:");
+            if (!titulo) return;
+        
+            const card = document.createElement('div');
+            const id = 'meta-' + Date.now();
+            card.className = 'meta-card';
+            card.id = id;
+            card.setAttribute('draggable', true);
+        
+            card.innerHTML = `
+              <div class="acciones">
+                <i class="fas fa-pencil-alt" onclick="editarMeta('${id}')"></i>
+                <i class="fas fa-trash" onclick="eliminarMeta('${id}')"></i>
+              </div>
+              <h4>${titulo}</h4>
+              <p>📅 Fecha límite: ${fecha}</p>
+              <p>🎯 KPI: ${kpi}</p>
+              <p>👤 Responsable: ${responsable}</p>
+            `;
+        
+            // Eventos drag
+            addDragEvents(card);
+        
+            document.getElementById(`area-${area}`).appendChild(card);
+          }
+        
+          function editarMeta(id) {
+            const card = document.getElementById(id);
+            const nuevoTitulo = prompt("Editar título:", card.querySelector('h4').textContent);
+            const nuevaFecha = prompt("Editar fecha límite:");
+            const nuevoKPI = prompt("Editar KPI:");
+            const nuevoResponsable = prompt("Editar responsable:");
+            if (!nuevoTitulo) return;
+        
+            card.querySelector('h4').textContent = nuevoTitulo;
+            const ps = card.querySelectorAll('p');
+            ps[0].innerHTML = `📅 Fecha límite: ${nuevaFecha}`;
+            ps[1].innerHTML = `🎯 KPI: ${nuevoKPI}`;
+            ps[2].innerHTML = `👤 Responsable: ${nuevoResponsable}`;
+          }
+        
+          function eliminarMeta(id) {
+            if (confirm("¿Eliminar esta meta?")) {
+              document.getElementById(id).remove();
+            }
+          }
+        
+          function addDragEvents(card) {
+            card.addEventListener('dragstart', e => {
+              e.dataTransfer.setData('text/plain', card.id);
+              setTimeout(() => card.style.opacity = '0.5', 0);
+            });
+        
+            card.addEventListener('dragend', e => {
+              card.style.opacity = '1';
+            });
+          }
+        
+          document.addEventListener('DOMContentLoaded', () => {
+            const columns = document.querySelectorAll('.area-column');
+            const cards = document.querySelectorAll('.meta-card');
+        
+            cards.forEach(addDragEvents);
+        
+            columns.forEach(col => {
+              col.addEventListener('dragover', e => {
+                e.preventDefault();
+                col.classList.add('drag-over');
+              });
+        
+              col.addEventListener('dragleave', () => {
+                col.classList.remove('drag-over');
+              });
+        
+              col.addEventListener('drop', e => {
+                e.preventDefault();
+                const cardId = e.dataTransfer.getData('text/plain');
+                const card = document.getElementById(cardId);
+                col.querySelector('div').appendChild(card);
+                col.classList.remove('drag-over');
+              });
+            });
+          });
+        </script>
+        
+    </div>
+    <script src="SCRIPTS/FechaActual.js"></script>
+
+
+
+
+
+
+
+    
+     <div id="people-analytics" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+         <h2>People Analytics</h2>
             <div class="cards">
                 <div class="card"><i class="fas fa-chart-bar"></i><p>Análisis de Talento</p></div>
                 <div class="card"><i class="fas fa-database"></i><p>Gestión de Datos</p></div>
                 <div class="card"><i class="fas fa-search"></i><p>Predicción de Rendimiento</p></div>
-            </div>
-        </div>
-
-    <script>
-        function showSection(sectionId) {
-    // Oculta todas las secciones antes de mostrar la deseada
-    document.querySelectorAll('.section').forEach(section => section.style.display = "none");
-    document.querySelectorAll('.section1').forEach(section => section.style.display = "none");
-
-    // Muestra la sección seleccionada
-    document.getElementById(sectionId).style.display = "block";
-
-    // Remueve la clase "active" de todos los elementos del menú
-    document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
-
-    // Agrega la clase "active" al botón que fue presionado
-    let selectedItem = document.querySelector(`li[onclick="showSection('${sectionId}', event)"]`);
-    if (selectedItem) {
-        selectedItem.classList.add("active");
-    }
-
-    // Si la pantalla es de móvil o tablet, cierra el menú y muestra el contenido principal
-    if (window.innerWidth <= 1024) {
-        const sidebar = document.querySelector(".sidebar");
-        const mainContent = document.querySelector(".main");
-        const chatButton = document.querySelector(".chat-button");
-
-        sidebar.classList.remove("open"); // Cierra el menú
-        mainContent.style.display = "block"; // Vuelve a mostrar el contenido
-        chatButton.style.display = "block"; // Muestra el botón de chat
-
-        // Desplaza suavemente la sección seleccionada al centro
-        setTimeout(() => {
-            document.getElementById(sectionId).scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 300);
-    }
-}
-
-function toggleMenu() {
-    const sidebar = document.querySelector(".sidebar");
-    const mainContent = document.querySelector(".main");
-    const chatButton = document.querySelector(".chat-button");
-
-    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo o cerrando
-
-    // Alterna la clase "open" para mostrar u ocultar el menú
-    sidebar.classList.toggle("open");
-
-    // Si se abre el menú, oculta el contenido y el chat
-    if (isOpening) {
-        mainContent.style.display = "none"; 
-        chatButton.style.display = "none";
-    } else {
-        mainContent.style.display = "block"; 
-        chatButton.style.display = "block";
-    }
-}
-
-// Agregar evento a las opciones del menú para registrar que se ha seleccionado una
-document.querySelectorAll(".menu li").forEach(item => {
-    item.addEventListener("click", function() {
-        document.querySelector(".sidebar").classList.remove("open"); // Oculta el menú
-        document.querySelector(".main").style.display = "block"; // Muestra el contenido
-        document.querySelector(".chat-button").style.display = "block"; // Muestra el chat
-    });
-});
-
-    
-    </script>
+            </div>             
+     </div>
+    <script src="SCRIPTS/ComportamientoSecciones.js"></script>
 
 <div id="ayuda" class="section">
     <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
     <h2>Centro de Ayuda</h2>
     <div class="cards">
-        <div class="card" onclick="openHelpWindow()" style="cursor:pointer;">
-            <i class="fas fa-info-circle"></i>
-            <p>Soporte General</p>
-        </div>
-        <div class="card" onclick="openFAQWindow()" style="cursor:pointer;">
-            <i class="fas fa-question"></i>
-            <p>Preguntas Frecuentes</p>
-        </div>
-        <div class="card" onclick="openChatSupport()" style="cursor:pointer;">
-            <i class="fas fa-comments"></i>
-            <p>Asistencia en Vivo</p>
-        </div>
+        <div class="card" onclick="openHelpWindow()" style="cursor:pointer;"><i class="fas fa-info-circle"></i><p>Soporte General</p></div>
+        <div class="card" onclick="openFAQWindow()" style="cursor:pointer;"><i class="fas fa-question"></i><p>Preguntas Frecuentes</p></div>
+        <div class="card" onclick="openChatSupport()" style="cursor:pointer;"><i class="fas fa-comments"></i><p>Asistencia en Vivo</p></div>
     </div>
 </div>
-</div>
 
-<div id="chat-container" class="chat-container">
+<div id="chat-container1" class="chat-container1">
     <iframe 
         src="https://studio.d-id.com/agents/share?id=agt_AgWTXGyD&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" 
         allow="microphone; camera; autoplay; encrypted-media"
         allowfullscreen>
     </iframe>
 </div>
-
-<button id="chat-toggle" class="chat-button">
-    <img src="IMAGENES/LIA.SOMOS.+.jpeg" alt="Chatbot Avatar">
-</button>
-
-<script>
-    // Funcionalidad para mostrar/ocultar el chatbot
-    document.getElementById("chat-toggle").addEventListener("click", function () {
-        let chatContainer = document.getElementById("chat-container");
-        let chatContainer1 = document.getElementById("chat-container1");
-        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-            chatContainer.style.display = "block";
-            chatContainer1.style.display = "none";
-        } else {
-            chatContainer.style.display = "none";
-        }
-    });
-</script>
-
-<div id="chat-container1" class="chat-container1">
-    <iframe 
-        src="https://studio.d-id.com/agents/share?id=agt_7xUKmJPL&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" 
-        allow="microphone; camera; autoplay; encrypted-media"
-        allowfullscreen>
-    </iframe>
-</div>
-
-<button id="chat-toggle1" class="chat-button1">
-    <img src="IMAGENES/Clarity_Pose4.png" alt="Chatbot Avatar">
-</button>
-
-<script>
-    // Funcionalidad para mostrar/ocultar el chatbot
-    document.getElementById("chat-toggle1").addEventListener("click", function () {
-        let chatContainer = document.getElementById("chat-container");
-        let chatContainer1 = document.getElementById("chat-container1");
-        if (chatContainer1.style.display === "none" || chatContainer1.style.display === "") {
-            chatContainer1.style.display = "block";
-            chatContainer.style.display = "none";
-        } else {
-            chatContainer1.style.display = "none";
-        }
-    });
-</script>
+<button id="chat-toggle1" class="chat-button1"><img src="IMAGENES/LIA.SOMOS.+.jpeg" alt="Chatbot Avatar"></button>
+<script src="SCRIPTS/OcultarMostrarChatBot.js"></script>
 
 </body>
 </html>
